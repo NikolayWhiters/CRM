@@ -71,9 +71,9 @@ export const createClientForm = () => {
         clientBlockBtnSaveAndCancel
     )
     // Add // div (subblock of label & input) ← label & input (NAME, SURNAME, LASTNAME)
-    clientBlockDivName.append(clientBlocklabelName, clientBlockInputName)
-    clientBlockDivSurname.append(clientBlocklabelSurname, clientBlockInputSurname)
-    clientBlockDivLastname.append(clientBlocklabelLastName, clientBlockInputLastName)
+    clientBlockDivName.append(clientBlockInputName, clientBlocklabelName)
+    clientBlockDivSurname.append(clientBlockInputSurname, clientBlocklabelSurname)
+    clientBlockDivLastname.append(clientBlockInputLastName, clientBlocklabelLastName)
     // Add // label ← span (required)
     clientBlocklabelName.append(clientBlocklabelNameRequired)
     clientBlocklabelLastName.append(clientBlocklabelLastNameRequired)

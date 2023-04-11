@@ -328,8 +328,13 @@ ul {
 .form__surname-label,
 .form__lastname-label {
     position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 14px;
     color: var(--color__gray-2);
     pointer-events: none;
+    transform-origin: left;
+    transition: top 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .form__name-label-required,
@@ -343,11 +348,8 @@ ul {
 .form__name-input:not(:focus):valid+.form__name-label,
 .form__lastname-input:not(:focus):valid+.form__lastname-label {
     top: -15px;
-    left: 10px;
-    font-size: 10px;
-    line-height: 14px;
-    color: blueviolet;
-    transform: scale(0.5);
+    color: var(--color__gray-2);
+    transform: scale(0.8);
 }
 
 /* -- */
