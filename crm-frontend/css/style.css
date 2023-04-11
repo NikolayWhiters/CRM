@@ -8,7 +8,6 @@
     font-weight: 400;
     font-style: normal;
     font-display: swap;
-
 }
 
 @font-face {
@@ -233,7 +232,6 @@ ul {
         transition: color 0.3s ease;
     }
 }
-
 /* -- */
 
 /* --- Button «Add client» --- */
@@ -286,7 +284,6 @@ ul {
     border-color: var(--color__gray-1);
     transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
-
 /* -- */
 
 /* --- MODAL BLOCK --- */
@@ -351,7 +348,6 @@ ul {
     color: var(--color__gray-2);
     transform: scale(0.8);
 }
-
 /* -- */
 
 .form__name-input,
@@ -441,7 +437,6 @@ ul {
     fill: var(--color__purple-3);
     transition: fill 0.3s ease;
 }
-
 /* -- */
 
 /* --- Buttons SAVE and CANCEL --- */
@@ -493,5 +488,4 @@ ul {
     color: var(--color__purple-3);
     transition: color 0.3s ease;
 }
-
-/* -- */
+/* ------ */
