@@ -1,0 +1,495 @@
+/* ____________________ FONTS ____________________ */
+
+@font-face {
+    font-family: 'OpenSans';
+    src: local('OpenSans-Regular'),
+        url('../fonts/OpenSansRegular.woff2') format('woff2'),
+        url('../fonts/OpenSansRegular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: local('OpenSans-SemiBold'),
+        url('../fonts/OpenSansSemiBold.woff2') format('woff2'),
+        url('../fonts/OpenSansSemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: local('OpenSans-Bold'),
+        url('../fonts/OpenSansBold.woff2') format('woff2'),
+        url('../fonts/OpenSansBold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ____________________ DEFAULT ____________________ */
+
+:root {
+    --color__white: #FFFFFF;
+    --color__green: #34C759;
+    --color__yellow: #E6B127;
+    --color__red: #F06A4D;
+    --color__purple-1: #9873FF;
+    --color__purple-2: #B89EFF;
+    --color__purple-3: #8052FF;
+    --color__gray-1: #C8C5D1;
+    --color__gray-2: #B0B0B0;
+    --color__gray-3: #F5F5F5;
+    --color__black: #333333;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    min-width: 320px;
+    font-family: 'OpenSans', sans-serif;
+    font-weight: 400;
+    background-color: var(--color__gray-3);
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* ____________________ GLOBAL ____________________ */
+
+.container {
+    max-width: 1014px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.flex {
+    display: flex;
+}
+
+.btn {
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* ____________________ HEADER ____________________ */
+
+.header {
+    width: 100%;
+    padding-top: 23px;
+    padding-bottom: 23px;
+    font-size: 14px;
+    box-shadow: 0px 0px 15px var(--color__gray-1);
+}
+
+.header__container {
+    align-items: center;
+}
+
+.header__logo {
+    margin-right: 53px;
+    width: 55px;
+    cursor: pointer;
+}
+
+.form-search {
+    width: 100%;
+}
+
+.form-search__input {
+    max-width: 541px;
+    width: 100%;
+    padding: 12px 0 13px 16px;
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--color__black);
+    border: 1px solid rgba(51, 51, 51, 0.2);
+}
+
+.form-search__input::placeholder {
+    color: var(--color__gray-2)
+}
+
+/* ____________________ MAIN ____________________ */
+
+/* __________ Clients __________ */
+
+/* --- Head of table --- */
+.clients {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 120px;
+}
+
+.clients__title {
+    place-self: flex-start;
+    padding-top: 40px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: var(--color__black);
+}
+
+.clients__clientstable {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 40px;
+}
+
+.clientstable__header {
+    font-size: 12px;
+    color: var(--color__gray-2);
+}
+
+.header-row__subblock {
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.header-row__subblock-titlefirst,
+.header-row__subblock-icon-first {
+    color: var(--color__purple-1);
+}
+
+.header-row__subblock-icon {
+    color: var(--color__purple-1);
+    opacity: 0.7;
+}
+
+.row-client__personinfo {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--color__black);
+}
+
+.change-info {
+    margin-right: 30px;
+}
+
+.change-info,
+.delete-info {
+    align-items: center;
+    cursor: pointer;
+    color: var(--color__black);
+    transition: color 0.3s ease;
+}
+
+.change-info__icon {
+    margin-right: 2px;
+}
+
+.delete-info__icon {
+    margin-right: 3px;
+}
+
+/* -(focus, hover, active for header OF TABLE)- */
+@media(any-hover: hover) {
+
+    .change-info:hover,
+    .delete-info:hover {
+        color: var(--color__purple-1);
+        transition: color 0.3s ease;
+    }
+}
+
+/* -- */
+
+/* --- Button «Add client» --- */
+.clients__addclient {
+    align-items: center;
+    padding: 13px 27px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--color__purple-1);
+    border: 1px solid var(--color__purple-1);
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.addclient__icon {
+    margin-right: 10px;
+    fill: var(--color__purple-1);
+    transition: fill 0.3s ease;
+}
+
+/* -(focus, hover, active for Button «Add client»)- */
+@media(any-hover: hover) {
+    .clients__addclient:hover {
+        color: var(--color__white);
+        background-color: var(--color__purple-2);
+        transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .clients__addclient:hover .addclient__icon {
+        fill: var(--color__white);
+        transition: fill 0.3s ease;
+    }
+}
+
+.clients__addclient:active {
+    color: var(--color__white);
+    background-color: var(--color__purple-3);
+    border-color: var(--color__purple-1);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.clients__addclient:active .addclient__icon {
+    fill: var(--color__white);
+    transition: fill 0.3s ease;
+}
+
+.clients__addclient:disabled {
+    color: var(--color__gray-1);
+    background-color: var(--color__white);
+    border-color: var(--color__gray-1);
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* -- */
+
+/* --- MODAL BLOCK --- */
+.modalblock {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(51, 51, 51, 0.8);
+
+}
+
+.modalblock__content {
+    position: relative;
+    max-width: 450px;
+    width: 100%;
+    background-color: var(--color__white);
+}
+
+.modalblock__title {
+    padding: 24px 0 32px 30px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.form__name,
+.form__surname,
+.form__lastname {
+    position: relative;
+    margin-left: 30px;
+}
+
+.form__name-label,
+.form__surname-label,
+.form__lastname-label {
+    position: absolute;
+    color: var(--color__gray-2);
+    pointer-events: none;
+}
+
+.form__name-label-required,
+.form__lastname-label-required {
+    color: var(--color__purple-1);
+}
+
+/* -(focus, hover, active for PLACEHOLDER)- */
+.form__name-input:focus+.form__name-label,
+.form__lastname-input:focus+.form__lastname-label,
+.form__name-input:not(:focus):valid+.form__name-label,
+.form__lastname-input:not(:focus):valid+.form__lastname-label {
+    top: -15px;
+    left: 10px;
+    font-size: 10px;
+    line-height: 14px;
+    color: blueviolet;
+    transform: scale(0.5);
+}
+
+/* -- */
+
+.form__name-input,
+.form__surname-input,
+.form__lastname-input {
+    max-width: 390px;
+    width: 100%;
+    height: 25px;
+    margin-bottom: 32px;
+    padding: 10px 0px;
+    font-size: 14px;
+    line-height: 19px;
+    border-bottom: 1px solid var(--color__gray-1);
+    appearance: none;
+}
+
+.form__addcontact-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 35px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    background-color: rgb(200, 197, 209, 0.3);
+    cursor: pointer;
+}
+
+.form__addcontact-button-icon {
+    margin-right: 5px;
+}
+
+.form__addcontact-button-text {
+    transition: color 0.3s ease;
+}
+
+@media(any-hover: hover) {
+    .form__addcontact-button:hover .form__addcontact-button-text {
+        color: var(--color__purple-2);
+        transition: color 0.3s ease;
+    }
+}
+
+.form__addcontact-button:active .form__addcontact-button-text {
+    color: var(--color__purple-1);
+    transition: color 0.3s ease;
+}
+
+/* -(focus, hover, active for CLOSE BUTTON of MODAL BLOCK)- */
+.modalblock__button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    fill: var(--color__gray-2);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.modalblock__button svg {
+    fill: var(--color__gray-2);
+    outline: 1px solid transparent;
+    outline-offset: 2px;
+    transition: fill 0.3s ease;
+}
+
+@media(any-hover: hover) {
+    /* .modalblock__button:focus-visible svg {
+        outline: 1px solid var(--color__black);
+        outline-offset: 2px;
+        transition: outline 0.3s ease;
+    } */
+
+    .modalblock__button:hover svg {
+        outline: none;
+        fill: var(--color__purple-1);
+        transition: fill 0.3s ease;
+    }
+}
+
+.modalblock__button:active svg {
+    outline: none;
+    fill: var(--color__purple-3);
+    transition: fill 0.3s ease;
+}
+
+/* -- */
+
+/* --- Buttons SAVE and CANCEL --- */
+.form__buttonsgroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    padding-bottom: 21px;
+}
+
+.form__buttonsgroup-save {
+    margin-bottom: 8px;
+    padding: 12px 35px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--color__white);
+    background-color: var(--color__purple-1);
+    transition: background-color 0.3s ease;
+}
+
+.form__buttonsgroup-cancel {
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+/* (focus, hover, active for Buttons SAVE and CANCEL) */
+@media(any-hover: hover) {
+    .form__buttonsgroup-save:hover {
+        background-color: var(--color__purple-2);
+        transition: background-color 0.3s ease;
+    }
+
+    .form__buttonsgroup-cancel:hover {
+        color: var(--color__purple-2);
+    }
+
+}
+
+.form__buttonsgroup-save:active {
+    background-color: var(--color__purple-3);
+    transition: background-color 0.3s ease;
+}
+
+.form__buttonsgroup-cancel:active {
+    color: var(--color__purple-3);
+    transition: color 0.3s ease;
+}
+
+/* -- */
