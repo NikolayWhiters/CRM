@@ -341,8 +341,10 @@ ul {
 
 /* -(focus, hover, active for PLACEHOLDER)- */
 .form__name-input:focus+.form__name-label,
+.form__surname-input:focus+.form__surname-label,
 .form__lastname-input:focus+.form__lastname-label,
 .form__name-input:not(:focus):valid+.form__name-label,
+.form__surname-input:not(:focus):valid+.form__surname-label,
 .form__lastname-input:not(:focus):valid+.form__lastname-label {
     top: -15px;
     color: var(--color__gray-2);

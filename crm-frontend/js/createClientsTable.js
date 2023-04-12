@@ -1,5 +1,6 @@
 // IMPORT // "function (Add client)" and "svg (Icons)"
 import { createNewClient } from './addClient.js'
+import { createClientForm } from './createClientsForm.js'
 import { svgIcons } from './svg.js'
 
 export const createClientsTable = () => {

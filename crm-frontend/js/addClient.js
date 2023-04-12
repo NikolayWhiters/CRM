@@ -20,6 +20,16 @@ export const createNewClient = () => {
         clientForm.clientBlockForm
     )
 
+    clientForm.clientBlockBtnClose.addEventListener('click', () => {
+        modalWindow.remove()
+    })
+
+    // document.addEventListener('click', (e) => {
+    //     if (e.target == modalWindow) {
+    //         modalWindow.remove()
+    //     }
+    // })
+
     // ----- CLASS FOR ELEMENT'S ----- //
     // Class // "div (Modal window)" and "div (Client block)"
     modalWindow.classList.add('modalblock')
