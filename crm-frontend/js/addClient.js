@@ -37,8 +37,8 @@ export const createNewClient = () => {
 
     // ----- CLASS FOR ELEMENT'S ----- //
     // Class // "div (Modal window)" and "div (Client block)"
-    modalWindow.classList.add('modalblock', 'modal-animation')
-    clientBlock.classList.add('modalblock__content', 'modal-animation')
+    modalWindow.classList.add('modalblock', 'modal-show')
+    clientBlock.classList.add('modalblock__content')
 
     return modalWindow
 }
