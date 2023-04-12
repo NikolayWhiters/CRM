@@ -60,6 +60,15 @@ export const createClientForm = () => {
     clientBlocklabelName.htmlFor = 'input-name'
     clientBlocklabelSurname.htmlFor = 'input-surname'
     clientBlocklabelLastName.htmlFor = 'input-lastname'
+    // Add // animation-focused for "Label-Surname"
+    clientBlockInputSurname.addEventListener('focus', () => {
+        clientBlocklabelSurname.classList.add('focused')
+    })
+    clientBlockInputSurname.addEventListener('blur', () => {
+        if (!clientBlockInputSurname.value) {
+            clientBlocklabelSurname.classList.remove('focused')
+        }
+    })
 
     // ----- ADD ELEMENT'S ----- //
     // Add // form ← div (subblock of label & input)

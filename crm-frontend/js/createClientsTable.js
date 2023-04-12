@@ -66,6 +66,8 @@ export const createClientsTable = () => {
     tableTheadTrThSPANFullName.append(thSPANFullNameSpan)
     tableTheadTrThSPANCreatingDate.append(thSPANCreatingDateSpan)
     tableTheadTrThSPANLastChanges.append(thSPANLastChangesSpan)
+    tableTheadTrThSPANContacts.append(thSPANContactsSpan)
+    tableTheadTrThSPANActions.append(thSPANActionsSpan)
     // Add // "span (text)" ← "span (svg)"
     tableTheadTrThSPANId.append(thSPANIdSVG)
     tableTheadTrThSPANFullName.append(thSPANFullNameSVG)
@@ -75,7 +77,7 @@ export const createClientsTable = () => {
     // ----- TEXT FOR ELEMENT'S ----- //
     // Text // "span (text)"
     thSPANIdSpan.textContent = 'ID '
-    thSPANFullNameSpan.textContent = 'Surname Name Vatersname '
+    thSPANFullNameSpan.textContent = 'Lastname Name Surname '
     thSPANCreatingDateSpan.textContent = 'Date and time of creation '
     thSPANLastChangesSpan.textContent = 'Last changes '
     thSPANContactsSpan.textContent = 'Contacts '
