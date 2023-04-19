@@ -20,6 +20,20 @@ export const createNewClient = () => {
         clientForm.clientBlockForm
     )
 
+    // ADD CONTACT // On click "Button (Add contact)"
+    clientForm.clientBlockForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+
+        let contactsOfClients = []
+        let clientObj = {}
+
+        clientObj.name = clientForm.clientBlockInputName.value
+        clientObj.lastName = clientForm.clientBlockInputLastName.value
+        clientObj.surname = clientForm.clientBlockInputSurname.value
+        clientObj.contacts = contactsOfClients
+        console.log(clientObj)
+    })
+
     // REMOVE MODAL WINDOW // On click "Button Close"
     clientForm.clientBlockBtnClose.addEventListener('click', () => {
         modalWindow.remove()
@@ -37,7 +51,7 @@ export const createNewClient = () => {
 
     // ----- CLASS FOR ELEMENT'S ----- //
     // Class // "div (Modal window)" and "div (Client block)"
-    modalWindow.classList.add('modalblock', 'modal-show')
+    modalWindow.classList.add('modalblock')
     clientBlock.classList.add('modalblock__content')
 
     return modalWindow

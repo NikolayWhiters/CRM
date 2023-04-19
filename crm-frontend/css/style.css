@@ -43,6 +43,8 @@
     --color__gray-1: #C8C5D1;
     --color__gray-2: #B0B0B0;
     --color__gray-3: #F5F5F5;
+    --color__gray-4: #F4F3F6;
+    --color__gray-5: #E7E5EB;
     --color__black: #333333;
 }
 
@@ -304,15 +306,17 @@ ul {
 
 @keyframes flow {
     0% {
-        transform: translate(0%, 0%) scale(0);
+        transform: translate(0%, -22%) scale(0);
     }
+
     100% {
-        transform: translate(0%, 0%) scale(1);    
+        transform: translate(0%, 0%) scale(1);
     }
 }
 
 .modalblock__content {
     position: relative;
+    top: -5%;
     max-width: 450px;
     width: 100%;
     background-color: var(--color__white);
@@ -351,7 +355,7 @@ ul {
     color: var(--color__purple-1);
 }
 
-/* -(focus, hover, active for PLACEHOLDER)- */
+/* PLACEHOLDER -(focus, hover, active)- */
 .form__name-input:focus+.form__name-label,
 .form__lastname-input:focus+.form__lastname-label,
 .form__name-input:not(:focus):valid+.form__name-label,
@@ -377,31 +381,59 @@ ul {
     appearance: none;
 }
 
+/* ADD CONTACT BUTTON -(focus, hover, active for )- */
+.form__addcontact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 12px;
+    line-height: 16px;
+    background-color: rgba(200, 197, 209, 0.2);
+}
+
 .form__addcontact-button {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 25%;
     height: 35px;
     font-weight: 600;
     font-size: 14px;
     line-height: 19px;
-    background-color: rgb(200, 197, 209, 0.3);
     cursor: pointer;
-}
-
-.form__addcontact-button-icon {
-    margin-right: 5px;
 }
 
 .form__addcontact-button-text {
     transition: color 0.3s ease;
 }
 
+.form__addcontact-button-icon,
+.form__addcontact-button-hovericon {
+    position: absolute;
+    left: -5px;
+    transition: opacity 0.3s ease;
+}
+
 @media(any-hover: hover) {
     .form__addcontact-button:hover .form__addcontact-button-text {
         color: var(--color__purple-2);
         transition: color 0.3s ease;
+    }
+
+    .form__addcontact-button-hovericon,
+    .form__addcontact-button:hover .form__addcontact-button-icon,
+    .form__addcontact-button:active .form__addcontact-button-icon {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .form__addcontact-button:hover .form__addcontact-button-hovericon,
+    .form__addcontact-button:active .form__addcontact-button-hovericon {
+        opacity: 1;
+        transition: opacity 0.3s ease;
     }
 }
 
@@ -410,7 +442,106 @@ ul {
     transition: color 0.3s ease;
 }
 
-/* -(focus, hover, active for CLOSE BUTTON of MODAL BLOCK)- */
+/* Add contact (type of data, input, tooltip) */
+.contact {
+    display: flex;
+    max-width: 390px;
+    width: 100%;
+    height: 37px;
+    border-top: 1px solid var(--color__gray-1);
+    border-bottom: 1px solid var(--color__gray-1);
+}
+
+.contact__blocktype {
+    max-width: 100%;
+    border-left: 1px solid var(--color__gray-1);
+    border-right: 1px solid var(--color__gray-1);
+}
+
+.contact__type {
+    position: relative;
+    text-align: left;
+    padding-left: 12px;
+}
+
+.contact__type::before {
+    content: '';
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    width: 10px;
+    height: 10px;
+    background: url('/img/clients/add-client__arrow-down.png') no-repeat center;
+}
+
+.contact__type,
+.contact__list {
+    width: 123px;
+}
+
+.contact__type {
+    height: 100%;
+    background-color: var(--color__gray-5);
+}
+
+.contact__list {
+    background-color: var(--color__gray-4);
+    opacity: 1;
+    visibility: visible;
+    transform: opacity 0.3s ease;
+}
+
+.contact__item {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 12px;
+    cursor: pointer;
+}
+
+.contact__item:hover {
+    background-color: rgb(231, 229, 235, 0.5);
+}
+
+.contact__input {
+    max-width: 267px;
+    width: 100%;
+    padding: 12px 0px;
+    padding-left: 8px;
+}
+
+.contact__delete {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 27px;
+    width: 100%;
+    border: 1px solid var(--color__gray-1);
+}
+
+.contact__tooltip {
+    position: absolute;
+    top: -35px;
+    width: 125px;
+    padding: 10px 0px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--color__white);
+    background-color: var(--color__black);
+}
+
+.contact__tooltip::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    border-width: 10px 5px 0;
+    border-style: solid;
+    border-color: var(--color__black) transparent;
+}
+
+/* CLOSE BUTTON of MODAL BLOCK -(focus, hover, active for )- */
 .modalblock__button {
     position: absolute;
     top: 20px;
@@ -450,8 +581,6 @@ ul {
     fill: var(--color__purple-3);
     transition: fill 0.3s ease;
 }
-
-/* -- */
 
 /* --- Buttons SAVE and CANCEL --- */
 .form__buttonsgroup {

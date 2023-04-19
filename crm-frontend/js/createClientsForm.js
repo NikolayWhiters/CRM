@@ -1,3 +1,4 @@
+import { createContact } from './createContact.js'
 import { svgIcons } from './svg.js'
 // _________________________ BLOCK OF FORM _________________________ //
 export const createClientForm = () => {
@@ -44,6 +45,7 @@ export const createClientForm = () => {
     clientBlockTitle.textContent = 'New client'
     clientBlockBtnClose.innerHTML = svgIcons.addClientBtnClose
     clientBlockBtnAddContactIcon.innerHTML = svgIcons.iconAddContact
+    clientBlockBtnAddContactIconActive.innerHTML = svgIcons.iconAddContactHoverActive
     clientBlockBtnAddContactTEXT.textContent = 'Add contact'
     clientBlockBtnSave.textContent = 'Save'
     clientBlockBtnCancel.textContent = 'Cancel'
@@ -69,13 +71,35 @@ export const createClientForm = () => {
             clientBlocklabelSurname.classList.remove('focused')
         }
     })
+    // Add // Contacts 
+    clientBlockBtnAddContact.addEventListener('click', (e) => {
+        e.preventDefault()
+        const contactElements = document.getElementsByClassName('contact')
+
+        if (contactElements.length < 9) {
+            const contactElement = createContact()
+            clientBlockBtnDivAddContact.prepend(contactElement.contactBlock)
+        } else {
+            clientBlockBtnDivAddContact.prepend(contactElement.contactBlock)
+            clientBlockBtnAddContact.remove('active')
+        }
+    })
+    // // Add // animation-hover for "Svg icons of Add contact"
+    // clientBlockBtnAddContact.addEventListener('mousemove', () => {
+    //     clientBlockBtnAddContactIcon.classList.remove('form__addcontact-button--active')
+    //     clientBlockBtnAddContactIconActive.classList.add('form__addcontact-button--active')
+    // })
+    // clientBlockBtnAddContact.addEventListener('mouseleave', () => {
+    //     clientBlockBtnAddContactIcon.classList.add('form__addcontact-button--active')
+    //     clientBlockBtnAddContactIconActive.classList.remove('form__addcontact-button--active')
+    // })
 
     // ----- ADD ELEMENT'S ----- //
     // Add // form ← div (subblock of label & input)
     clientBlockForm.append(
         clientBlockDivName,
-        clientBlockDivSurname,
         clientBlockDivLastname,
+        clientBlockDivSurname,
         clientBlockBtnDivAddContact,
         clientBlockBtnSaveAndCancel
     )
@@ -120,7 +144,7 @@ export const createClientForm = () => {
     clientBlocklabelLastNameRequired.classList.add('form__lastname-label-required')
     clientBlockBtnDivAddContact.classList.add('form__addcontact')
     // Class // "button (Add contact)"
-    clientBlockBtnAddContact.classList.add('form__addcontact-button', 'btn')
+    clientBlockBtnAddContact.classList.add('form__addcontact-button', 'btn', 'active')
     // Class // "span (text & icon)"
     clientBlockBtnAddContactIcon.classList.add('form__addcontact-button-icon')
     clientBlockBtnAddContactIconActive.classList.add('form__addcontact-button-hovericon')
