@@ -514,14 +514,22 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1;
     max-width: 27px;
     width: 100%;
     border: 1px solid var(--color__gray-1);
+    transition: border-color 0.3s ease;
+}
+
+.contact__delete svg {
+    fill: var(--color__gray-2);
+    transition: fill 0.3s ease;
 }
 
 .contact__tooltip {
     position: absolute;
     top: -35px;
+    left: 50%;
     width: 125px;
     padding: 10px 0px;
     font-weight: 700;
@@ -529,16 +537,39 @@ ul {
     line-height: 16px;
     color: var(--color__white);
     background-color: var(--color__black);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .contact__tooltip::before {
     content: '';
     position: absolute;
     left: 50%;
-    bottom: -10px;
-    border-width: 10px 5px 0;
+    bottom: -8px;
+    border-width: 8px 5px 0;
     border-style: solid;
     border-color: var(--color__black) transparent;
+    transform: translateX(-50%);
+}
+
+@media(any-hover: hover) {
+    .contact__delete:hover {
+        border-color: var(--color__red);
+        transition: border-color 0.3s ease, fill 0.3s ease;
+    }
+
+    .contact__delete:hover svg {
+        fill: var(--color__red);
+        transition: fill 0.3s ease;
+    }
+
+    .contact__delete:hover .contact__tooltip {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
 }
 
 /* CLOSE BUTTON of MODAL BLOCK -(focus, hover, active for )- */
