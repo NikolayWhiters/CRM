@@ -130,6 +130,7 @@ export const createClientsTable = () => {
     // Class // "tbody"
     tableTbody.classList.add('clientstable__list')
 
+    // ----- EVENT HANDLER'S ----- //
     btnAddClient.addEventListener('click', () => {
         document.body.append(createNewClient())
     })

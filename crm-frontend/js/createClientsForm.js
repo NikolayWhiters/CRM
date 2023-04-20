@@ -62,37 +62,6 @@ export const createClientForm = () => {
     clientBlocklabelName.htmlFor = 'input-name'
     clientBlocklabelSurname.htmlFor = 'input-surname'
     clientBlocklabelLastName.htmlFor = 'input-lastname'
-    // Add // animation-focused for "Label-Surname"
-    clientBlockInputSurname.addEventListener('focus', () => {
-        clientBlocklabelSurname.classList.add('focused')
-    })
-    clientBlockInputSurname.addEventListener('blur', () => {
-        if (!clientBlockInputSurname.value) {
-            clientBlocklabelSurname.classList.remove('focused')
-        }
-    })
-    // Add // Contacts 
-    clientBlockBtnAddContact.addEventListener('click', (e) => {
-        e.preventDefault()
-        const contactElements = document.getElementsByClassName('contact')
-
-        if (contactElements.length < 9) {
-            const contactElement = createContact()
-            clientBlockBtnDivAddContact.prepend(contactElement.contactBlock)
-        } else {
-            clientBlockBtnDivAddContact.prepend(contactElement.contactBlock)
-            clientBlockBtnAddContact.remove('active')
-        }
-    })
-    // // Add // animation-hover for "Svg icons of Add contact"
-    // clientBlockBtnAddContact.addEventListener('mousemove', () => {
-    //     clientBlockBtnAddContactIcon.classList.remove('form__addcontact-button--active')
-    //     clientBlockBtnAddContactIconActive.classList.add('form__addcontact-button--active')
-    // })
-    // clientBlockBtnAddContact.addEventListener('mouseleave', () => {
-    //     clientBlockBtnAddContactIcon.classList.add('form__addcontact-button--active')
-    //     clientBlockBtnAddContactIconActive.classList.remove('form__addcontact-button--active')
-    // })
 
     // ----- ADD ELEMENT'S ----- //
     // Add // form ← div (subblock of label & input)
@@ -144,7 +113,7 @@ export const createClientForm = () => {
     clientBlocklabelLastNameRequired.classList.add('form__lastname-label-required')
     clientBlockBtnDivAddContact.classList.add('form__addcontact')
     // Class // "button (Add contact)"
-    clientBlockBtnAddContact.classList.add('form__addcontact-button', 'btn', 'active')
+    clientBlockBtnAddContact.classList.add('form__addcontact-button', 'btn', 'form__addcontact-button--active')
     // Class // "span (text & icon)"
     clientBlockBtnAddContactIcon.classList.add('form__addcontact-button-icon')
     clientBlockBtnAddContactIconActive.classList.add('form__addcontact-button-hovericon')
@@ -154,6 +123,46 @@ export const createClientForm = () => {
     // Class // "button (Save & Cancel)"
     clientBlockBtnSave.classList.add('form__buttonsgroup-save', 'btn')
     clientBlockBtnCancel.classList.add('form__buttonsgroup-cancel', 'btn')
+
+    // ----- EVENT HANDLER'S ----- //
+    // Input & Label // Animation-focused for "Label-Surname"
+    clientBlockInputSurname.addEventListener('focus', () => {
+        clientBlocklabelSurname.classList.add('focused')
+    })
+    clientBlockInputSurname.addEventListener('blur', () => {
+        if (!clientBlockInputSurname.value) {
+            clientBlocklabelSurname.classList.remove('focused')
+        }
+    })
+    // Contacts // Add contact in modal window
+    clientBlockBtnAddContact.addEventListener('click', (e) => {
+        e.preventDefault()
+
+        const contactElements = document.getElementsByClassName('contact')
+
+        if (contactElements.length < 8) {
+            const contactElement = createContact()
+            clientBlockBtnDivAddContact.prepend(contactElement.contactBlock)
+            if (contactElements.length >= 5) {
+                document.querySelector('.modalblock__content').style.top = "0%"
+            }
+        } else {
+            const contactElement = createContact()
+            clientBlockBtnDivAddContact.prepend(contactElement.contactBlock)
+            clientBlockBtnAddContact.classList.remove('form__addcontact-button--active')
+        }
+    })
+
+    // // Add // animation-hover for "Svg icons of Add contact"
+    // clientBlockBtnAddContact.addEventListener('mousemove', () => {
+    //     clientBlockBtnAddContactIcon.classList.remove('form__addcontact-button--active')
+    //     clientBlockBtnAddContactIconActive.classList.add('form__addcontact-button--active')
+    // })
+    // clientBlockBtnAddContact.addEventListener('mouseleave', () => {
+    //     clientBlockBtnAddContactIcon.classList.add('form__addcontact-button--active')
+    //     clientBlockBtnAddContactIconActive.classList.remove('form__addcontact-button--active')
+    // })
+
 
     return {
         clientBlockTitle,

@@ -63,6 +63,53 @@ export const createContact = () => {
     contactBlockListEmail.classList.add('contact__item')
     contactBlockListOther.classList.add('contact__item')
 
+    // ----- EVENT HANDLER'S ----- //
+    // DELETE Contacts // in (Add contact)
+    contactBlockDelete.addEventListener('click', (e) => {
+        e.preventDefault()
+
+        contactBlock.remove()
+        document.querySelector('.form__addcontact-button').classList.add('form__addcontact-button--active')
+
+        const contactElements = document.getElementsByClassName('contact')
+        if (contactElements.length <= 4) {
+            document.querySelector('.modalblock__content').style.top = "-5%"
+        }
+    })
+    // APPEARANCE List (type's) // in (Add contact)
+    contactBlockTypeBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        contactBlockList.classList.toggle('contact__list--active')
+        contactBlockTypeBtn.classList.toggle('contact__list--active')
+    })
+
+    contactBlockType.addEventListener('mouseleave', (e) => {
+        e.preventDefault()
+
+        contactBlockList.classList.remove('contact__list--active')
+        contactBlockTypeBtn.classList.remove('contact__list--active')
+    })
+    // SELECT type // in (Add contact)
+    const nameOfType = (type) => {
+        type.addEventListener('click', () => {
+            contactBlockTypeBtn.textContent = type.textContent
+            contactBlockList.classList.remove('contact__list--active')
+            contactBlockTypeBtn.classList.remove('contact__list--active')
+        })
+    }
+
+    const arrayOfType = [
+        contactBlockListPhone,
+        contactBlockListFacebook,
+        contactBlockListVkontakte,
+        contactBlockListEmail,
+        contactBlockListOther
+    ]
+
+    for (const type of arrayOfType) {
+        nameOfType(type)
+    }
+
     return {
         contactBlock,
         contactBlockInput,

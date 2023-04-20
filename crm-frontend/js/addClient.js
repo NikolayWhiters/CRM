@@ -1,4 +1,5 @@
 // IMPORT // "function (Client "form")"
+import { createClient } from './clientsAPI.js'
 import { createClientForm } from './createClientsForm.js'
 
 export const createNewClient = () => {
@@ -20,39 +21,51 @@ export const createNewClient = () => {
         clientForm.clientBlockForm
     )
 
-    // ADD CONTACT // On click "Button (Add contact)"
-    clientForm.clientBlockForm.addEventListener('submit', (e) => {
+    // ----- CLASS FOR ELEMENT'S ----- //
+    // Class // "div (Modal window)" and "div (Client block)"
+    modalWindow.classList.add('modalblock')
+    clientBlock.classList.add('modalblock__content')
+
+    // ----- EVENT HANDLER'S ----- //
+    // ADD data's of contacts // On click "Button (Add contact)"
+    clientForm.clientBlockForm.addEventListener('submit', async (e) => {
         e.preventDefault()
 
+        const contactsOfTypes = document.querySelectorAll('.contact__type')
+        const contactsOfValues = document.querySelectorAll('.contact__input')
         let contactsOfClients = []
         let clientObj = {}
+
+        for (let i = 0; i < contactsOfTypes.length; i++) {
+            contactsOfClients.push({
+                type: contactsOfTypes[i].textContent,
+                value: contactsOfValues[i].value
+            })
+        }
 
         clientObj.name = clientForm.clientBlockInputName.value
         clientObj.lastName = clientForm.clientBlockInputLastName.value
         clientObj.surname = clientForm.clientBlockInputSurname.value
         clientObj.contacts = contactsOfClients
         console.log(clientObj)
+
+        await createClient(clientObj)
     })
 
-    // REMOVE MODAL WINDOW // On click "Button Close"
+    // REMOVE Modal window // On click "Button Close"
     clientForm.clientBlockBtnClose.addEventListener('click', () => {
         modalWindow.remove()
     })
-    // REMOVE MODAL WINDOW // On click "Button Cancel"
+    // REMOVE Modal window // On click "Button Cancel"
     clientForm.clientBlockBtnCancel.addEventListener('click', () => {
         modalWindow.remove()
     })
-    // // REMOVE MODAL WINDOW // On click "Outside Modal Window"
+    // // REMOVE Modal window // On click "Outside Modal window"
     // document.addEventListener('click', (e) => {
     //     if (e.target == modalWindow) {
     //         modalWindow.remove()
     //     }
     // })
-
-    // ----- CLASS FOR ELEMENT'S ----- //
-    // Class // "div (Modal window)" and "div (Client block)"
-    modalWindow.classList.add('modalblock')
-    clientBlock.classList.add('modalblock__content')
 
     return modalWindow
 }

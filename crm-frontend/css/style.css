@@ -79,9 +79,9 @@ img {
 }
 
 input {
-    outline: none;
     border: none;
     background-color: transparent;
+    outline: none;
 }
 
 p {
@@ -109,8 +109,8 @@ ul {
 
 .btn {
     padding: 0;
-    background: none;
     border: none;
+    background: none;
     cursor: pointer;
 }
 
@@ -142,10 +142,10 @@ ul {
     max-width: 541px;
     width: 100%;
     padding: 12px 0 13px 16px;
+    border: 1px solid rgba(51, 51, 51, 0.2);
     font-size: 14px;
     line-height: 19px;
     color: var(--color__black);
-    border: 1px solid rgba(51, 51, 51, 0.2);
 }
 
 .form-search__input::placeholder {
@@ -158,8 +158,8 @@ ul {
 
 /* --- Head of table --- */
 .clients {
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
     padding-bottom: 120px;
 }
 
@@ -212,8 +212,8 @@ ul {
 .change-info,
 .delete-info {
     align-items: center;
-    cursor: pointer;
     color: var(--color__black);
+    cursor: pointer;
     transition: color 0.3s ease;
 }
 
@@ -227,7 +227,6 @@ ul {
 
 /* -(focus, hover, active for header OF TABLE)- */
 @media(any-hover: hover) {
-
     .change-info:hover,
     .delete-info:hover {
         color: var(--color__purple-1);
@@ -241,11 +240,11 @@ ul {
 .clients__addclient {
     align-items: center;
     padding: 13px 27px;
+    border: 1px solid var(--color__purple-1);
     font-weight: 600;
     font-size: 14px;
     line-height: 19px;
     color: var(--color__purple-1);
-    border: 1px solid var(--color__purple-1);
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
@@ -270,9 +269,9 @@ ul {
 }
 
 .clients__addclient:active {
+    border-color: var(--color__purple-1);
     color: var(--color__white);
     background-color: var(--color__purple-3);
-    border-color: var(--color__purple-1);
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -282,9 +281,9 @@ ul {
 }
 
 .clients__addclient:disabled {
+    border-color: var(--color__gray-1);
     color: var(--color__gray-1);
     background-color: var(--color__white);
-    border-color: var(--color__gray-1);
     transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -301,6 +300,7 @@ ul {
     width: 100%;
     height: 100vh;
     background-color: rgba(51, 51, 51, 0.8);
+    overflow-x: auto;
     animation: flow 0.3s ease;
 }
 
@@ -345,9 +345,9 @@ ul {
     left: 0;
     font-size: 14px;
     color: var(--color__gray-2);
-    pointer-events: none;
     transform-origin: left;
     transition: top 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
 }
 
 .form__name-label-required,
@@ -375,9 +375,9 @@ ul {
     width: 100%;
     height: 25px;
     padding: 10px 0px;
+    border-bottom: 1px solid var(--color__gray-1);
     font-size: 14px;
     line-height: 19px;
-    border-bottom: 1px solid var(--color__gray-1);
     appearance: none;
 }
 
@@ -385,8 +385,8 @@ ul {
 .form__addcontact {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: 100%;
     font-size: 12px;
     line-height: 16px;
@@ -403,7 +403,16 @@ ul {
     font-weight: 600;
     font-size: 14px;
     line-height: 19px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.form__addcontact-button--active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .form__addcontact-button-text {
@@ -448,8 +457,11 @@ ul {
     max-width: 390px;
     width: 100%;
     height: 37px;
-    border-top: 1px solid var(--color__gray-1);
-    border-bottom: 1px solid var(--color__gray-1);
+    margin-bottom: 15px;
+}
+
+.contact:first-child {
+    margin-top: 25px;
 }
 
 .contact__blocktype {
@@ -460,8 +472,10 @@ ul {
 
 .contact__type {
     position: relative;
-    text-align: left;
     padding-left: 12px;
+    border-top: 1px solid var(--color__gray-1);
+    border-bottom: 1px solid var(--color__gray-1);
+    text-align: left;
 }
 
 .contact__type::before {
@@ -472,6 +486,12 @@ ul {
     width: 10px;
     height: 10px;
     background: url('/img/clients/add-client__arrow-down.png') no-repeat center;
+    transition: transform 0.3s ease;
+}
+
+.contact__list--active.contact__type::before {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
 }
 
 .contact__type,
@@ -485,10 +505,21 @@ ul {
 }
 
 .contact__list {
+    position: absolute;
+    z-index: 1;
+    border-left: 1px solid var(--color__gray-1);
+    border-right: 1px solid var(--color__gray-1);
+    border-bottom: 1px solid var(--color__gray-1);
     background-color: var(--color__gray-4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.contact__list--active {
     opacity: 1;
     visibility: visible;
-    transform: opacity 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .contact__item {
@@ -507,6 +538,8 @@ ul {
     width: 100%;
     padding: 12px 0px;
     padding-left: 8px;
+    border-top: 1px solid var(--color__gray-1);
+    border-bottom: 1px solid var(--color__gray-1);
 }
 
 .contact__delete {
@@ -528,18 +561,18 @@ ul {
 
 .contact__tooltip {
     position: absolute;
-    top: -35px;
+    top: -25px;
     left: 50%;
     width: 125px;
-    padding: 10px 0px;
+    padding: 8px 0px;
     font-weight: 700;
     font-size: 12px;
     line-height: 16px;
     color: var(--color__white);
     background-color: var(--color__black);
+    transform: translateX(-50%);
     opacity: 0;
     visibility: hidden;
-    transform: translateX(-50%);
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
@@ -580,9 +613,9 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
     fill: var(--color__gray-2);
     background-color: transparent;
-    border: none;
     cursor: pointer;
 }
 
@@ -601,15 +634,15 @@ ul {
     } */
 
     .modalblock__button:hover svg {
-        outline: none;
         fill: var(--color__purple-1);
+        outline: none;
         transition: fill 0.3s ease;
     }
 }
 
 .modalblock__button:active svg {
-    outline: none;
     fill: var(--color__purple-3);
+    outline: none;
     transition: fill 0.3s ease;
 }
 
