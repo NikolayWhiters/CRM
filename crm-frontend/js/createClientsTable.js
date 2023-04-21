@@ -11,8 +11,10 @@ export const createClientsTable = () => {
     // ----- CREATE ELEMENT'S FOR HEAD OF TABLE ----- //
     // Create // "thead" for table
     const tableThead = document.createElement('thead')
+    //                          ↓
     // Create // "tr" for thead
     const tableTheadTr = document.createElement('tr')
+    //                          ↓
     // Create // "th (Elements of sorting)" for tr
     const tableTheadTrThId = document.createElement('th')
     const tableTheadTrThFullName = document.createElement('th')
@@ -20,6 +22,7 @@ export const createClientsTable = () => {
     const tableTheadTrThLastChanges = document.createElement('th')
     const tableTheadTrThContacts = document.createElement('th')
     const tableTheadTrThActions = document.createElement('th')
+    //                          ↓
     // Create // "span (for sort)" for th (Elements of sorting)
     const tableTheadTrThSPANId = document.createElement('span')
     const tableTheadTrThSPANFullName = document.createElement('span')
@@ -27,6 +30,7 @@ export const createClientsTable = () => {
     const tableTheadTrThSPANLastChanges = document.createElement('span')
     const tableTheadTrThSPANContacts = document.createElement('span')
     const tableTheadTrThSPANActions = document.createElement('span')
+    //                          ↓
     // Create // "span (text)" for span (for sort)
     const thSPANIdSpan = document.createElement('span')
     const thSPANFullNameSpan = document.createElement('span')
@@ -34,6 +38,7 @@ export const createClientsTable = () => {
     const thSPANLastChangesSpan = document.createElement('span')
     const thSPANContactsSpan = document.createElement('span')
     const thSPANActionsSpan = document.createElement('span')
+    //                          ↓
     // Create // "span (svg)"
     const thSPANIdSVG = document.createElement('span')
     const thSPANFullNameSVG = document.createElement('span')

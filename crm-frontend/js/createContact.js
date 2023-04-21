@@ -24,7 +24,7 @@ export const createContact = () => {
     contactBlockListOther.textContent = 'Other'
     contactBlockDelete.innerHTML = svgIcons.deleteIconGray
     contactBlockDeleteTooltip.textContent = 'Delete contact'
-    contactBlockTypeBtn.textContent = 'Info'
+    contactBlockTypeBtn.textContent = contactBlockListPhone.textContent
 
     // --- GET ATTRIBUTE --- //
     contactBlockInput.type = 'text'

@@ -84,6 +84,10 @@ input {
     outline: none;
 }
 
+th {
+    text-align: left;
+}
+
 p {
     margin: 0;
     padding: 0;
@@ -183,6 +187,10 @@ ul {
     color: var(--color__gray-2);
 }
 
+.clientstable__header-row {
+    padding-left: 15px;
+}
+
 .header-row__subblock {
     font-weight: 400;
     cursor: pointer;
@@ -198,11 +206,38 @@ ul {
     opacity: 0.7;
 }
 
-.row-client__personinfo {
+/* -(focus, hover, active for header OF TABLE)- */
+@media(any-hover: hover) {
+    .change-info:hover {
+        color: var(--color__purple-1);
+        transition: color 0.3s ease;
+    }
+
+    .delete-info:hover {
+        color: var(--color__red);
+        transition: color 0.3s ease;
+    }
+}
+
+/* --- Body of table --- */
+.clientstable__col-client {
+    background-color: var(--color__white);
+}
+
+.clientstable__row-client {
+    padding: 15px;
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
     color: var(--color__black);
+}
+
+.personinfo__name {
+    padding-right: 5px;
+}
+
+.personinfo__lastname {
+    padding-right: 5px;
 }
 
 .change-info {
@@ -224,17 +259,6 @@ ul {
 .delete-info__icon {
     margin-right: 3px;
 }
-
-/* -(focus, hover, active for header OF TABLE)- */
-@media(any-hover: hover) {
-    .change-info:hover,
-    .delete-info:hover {
-        color: var(--color__purple-1);
-        transition: color 0.3s ease;
-    }
-}
-
-/* -- */
 
 /* --- Button «Add client» --- */
 .clients__addclient {

@@ -9,12 +9,12 @@ export const createClientForm = () => {
     const clientBlockBtnClose = document.createElement('button')
     // Create // "div (subblock of label & input)"
     const clientBlockDivName = document.createElement('div')
-    const clientBlockDivSurname = document.createElement('div')
     const clientBlockDivLastname = document.createElement('div')
+    const clientBlockDivSurname = document.createElement('div')
     // Create // "input", "label"
     const clientBlocklabelName = document.createElement('label')
-    const clientBlocklabelSurname = document.createElement('label')
     const clientBlocklabelLastName = document.createElement('label')
+    const clientBlocklabelSurname = document.createElement('label')
     const clientBlockInputName = document.createElement('input')
     const clientBlockInputSurname = document.createElement('input')
     const clientBlockInputLastName = document.createElement('input')
@@ -52,16 +52,16 @@ export const createClientForm = () => {
 
     // Get attribute //
     clientBlockInputName.type = 'text'
-    clientBlockInputSurname.type = 'text'
     clientBlockInputLastName.type = 'text'
+    clientBlockInputSurname.type = 'text'
     clientBlockInputName.required = true
     clientBlockInputLastName.required = true
     clientBlockInputName.id = 'input-name'
-    clientBlockInputSurname.id = 'input-surname'
     clientBlockInputLastName.id = 'input-lastname'
+    clientBlockInputSurname.id = 'input-surname'
     clientBlocklabelName.htmlFor = 'input-name'
-    clientBlocklabelSurname.htmlFor = 'input-surname'
     clientBlocklabelLastName.htmlFor = 'input-lastname'
+    clientBlocklabelSurname.htmlFor = 'input-surname'
 
     // ----- ADD ELEMENT'S ----- //
     // Add // form ← div (subblock of label & input)
@@ -99,15 +99,15 @@ export const createClientForm = () => {
     clientBlockForm.classList.add('modalblock__form', 'form')
     // Class // "div (subblock of label & input)"
     clientBlockDivName.classList.add('form__name')
-    clientBlockDivSurname.classList.add('form__surname')
     clientBlockDivLastname.classList.add('form__lastname')
+    clientBlockDivSurname.classList.add('form__surname')
     // Class // "input", "label"
     clientBlocklabelName.classList.add('form__name-label')
-    clientBlocklabelSurname.classList.add('form__surname-label')
     clientBlocklabelLastName.classList.add('form__lastname-label')
+    clientBlocklabelSurname.classList.add('form__surname-label')
     clientBlockInputName.classList.add('form__name-input')
-    clientBlockInputSurname.classList.add('form__surname-input')
     clientBlockInputLastName.classList.add('form__lastname-input')
+    clientBlockInputSurname.classList.add('form__surname-input')
     // Class // "span (required)" FOR label
     clientBlocklabelNameRequired.classList.add('form__name-label-required')
     clientBlocklabelLastNameRequired.classList.add('form__lastname-label-required')
@@ -168,11 +168,11 @@ export const createClientForm = () => {
         clientBlockTitle,
         clientBlockForm,
         clientBlocklabelName,
-        clientBlocklabelSurname,
         clientBlocklabelLastName,
+        clientBlocklabelSurname,
         clientBlockInputName,
-        clientBlockInputSurname,
         clientBlockInputLastName,
+        clientBlockInputSurname,
         clientBlockBtnClose,
         clientBlockBtnDivAddContact,
         clientBlockBtnAddContact,
