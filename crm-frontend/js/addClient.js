@@ -33,11 +33,11 @@ export const createNewClient = () => {
 
         const contactsOfTypes = document.querySelectorAll('.contact__type')
         const contactsOfValues = document.querySelectorAll('.contact__input')
-        let contactsOfClients = []
+        let contacts = []
         let clientObj = {}
 
         for (let i = 0; i < contactsOfTypes.length; i++) {
-            contactsOfClients.push({
+            contacts.push({
                 type: contactsOfTypes[i].textContent,
                 value: contactsOfValues[i].value
             })
@@ -46,7 +46,7 @@ export const createNewClient = () => {
         clientObj.name = clientForm.clientBlockInputName.value
         clientObj.lastName = clientForm.clientBlockInputLastName.value
         clientObj.surname = clientForm.clientBlockInputSurname.value
-        clientObj.contacts = contactsOfClients
+        clientObj.contacts = contacts
         console.log(clientObj)
 
         await createClient(clientObj)

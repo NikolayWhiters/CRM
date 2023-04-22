@@ -84,11 +84,15 @@ input {
     outline: none;
 }
 
-th {
-    text-align: left;
+p {
+    margin: 0;
+    padding: 0;
 }
 
-p {
+table,
+th,
+tr,
+td {
     margin: 0;
     padding: 0;
 }
@@ -170,6 +174,7 @@ ul {
 .clients__title {
     place-self: flex-start;
     padding-top: 40px;
+    padding-bottom: 10px;
     font-weight: 700;
     font-size: 24px;
     line-height: 33px;
@@ -178,8 +183,8 @@ ul {
 
 .clients__clientstable {
     width: 100%;
-    padding-top: 10px;
-    padding-bottom: 40px;
+    margin-bottom: 40px;
+    border-collapse: collapse;
 }
 
 .clientstable__header {
@@ -189,6 +194,8 @@ ul {
 
 .clientstable__header-row {
     padding-left: 15px;
+    padding-bottom: 8px;
+    text-align: left;
 }
 
 .header-row__subblock {
@@ -221,11 +228,12 @@ ul {
 
 /* --- Body of table --- */
 .clientstable__col-client {
+    border-bottom: 1px solid var(--color__gray-1);
     background-color: var(--color__white);
 }
 
 .clientstable__row-client {
-    padding: 15px;
+    padding: 20px;
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
@@ -237,6 +245,14 @@ ul {
 }
 
 .personinfo__lastname {
+    padding-right: 5px;
+}
+
+.personinfo__creating-date {
+    padding-right: 5px;
+}
+
+.personinfo__lastchanges-date {
     padding-right: 5px;
 }
 
@@ -325,17 +341,6 @@ ul {
     height: 100vh;
     background-color: rgba(51, 51, 51, 0.8);
     overflow-x: auto;
-    animation: flow 0.3s ease;
-}
-
-@keyframes flow {
-    0% {
-        transform: translate(0%, -22%) scale(0);
-    }
-
-    100% {
-        transform: translate(0%, 0%) scale(1);
-    }
 }
 
 .modalblock__content {
@@ -344,6 +349,17 @@ ul {
     max-width: 450px;
     width: 100%;
     background-color: var(--color__white);
+    animation: flow 0.5s ease;
+}
+
+@keyframes flow {
+    0% {
+        transform: translate(0%, -10%) scale(0);
+    }
+    
+    100% {
+        transform: translate(0%, 0%) scale(1);
+    }
 }
 
 .modalblock__title {

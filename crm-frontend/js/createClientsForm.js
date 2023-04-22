@@ -140,7 +140,7 @@ export const createClientForm = () => {
 
         const contactElements = document.getElementsByClassName('contact')
 
-        if (contactElements.length < 8) {
+        if (contactElements.length < 9) {
             const contactElement = createContact()
             clientBlockBtnDivAddContact.prepend(contactElement.contactBlock)
             if (contactElements.length >= 5) {

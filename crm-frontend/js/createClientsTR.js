@@ -1,4 +1,6 @@
 import { svgIcons } from './svg.js'
+import { formatDate, formatTime } from './date&timeInfo.js'
+import { createContactItem } from './clientsAPI.js'
 
 export const createClientTR = (data) => {
     // ----- CREATE ELEMENT'S FOR TBODY OF TABLE ----- //
@@ -31,6 +33,10 @@ export const createClientTR = (data) => {
     const clientActionCHANGESpan = document.createElement('span')
     const clientActionDELETESvg = document.createElement('span')
     const clientActionDELETESpan = document.createElement('span')
+    
+    for (const contact of data.contacts) {
+        createContactItem(contact.type, contact.value, clientContactsSpan)
+    }
 
     // ----- TEXT FOR ELEMENT'S ----- //
     clientId.textContent = data.id.substr(0, 6)
@@ -41,6 +47,10 @@ export const createClientTR = (data) => {
     clientActionDELETESpan.textContent = 'Delete'
     clientActionCHANGESvg.innerHTML = svgIcons.changeIcon
     clientActionDELETESvg.innerHTML = svgIcons.deleteIcon
+    clientCreatingDate.textContent = formatDate(data.createdAt)
+    clientCreatingTime.textContent = formatTime(data.createdAt)
+    clientLastChangesDate.textContent = formatDate(data.updatedAt)
+    clientLastChangesTime.textContent = formatTime(data.updatedAt)
 
     // ----- ADD ELEMENT'S ----- //
     // Add // "tr" ← "td"
@@ -90,7 +100,6 @@ export const createClientTR = (data) => {
     clientActionCHANGESpan.classList.add('change-info__text')
     clientActionDELETESvg.classList.add('delete-info__icon')
     clientActionDELETESpan.classList.add('delete-info__text')
-
 
     return tableTbodyTr
 }

@@ -18,9 +18,9 @@ export const createContact = () => {
 
     // --- TEXT FOR ELEMENT'S --- //
     contactBlockListPhone.textContent = 'Phone'
-    contactBlockListEmail.textContent = 'E-mail'
+    contactBlockListEmail.textContent = 'Email'
     contactBlockListFacebook.textContent = 'Facebook'
-    contactBlockListVkontakte.textContent = 'Vkontakte'
+    contactBlockListVkontakte.textContent = 'Vk'
     contactBlockListOther.textContent = 'Other'
     contactBlockDelete.innerHTML = svgIcons.deleteIconGray
     contactBlockDeleteTooltip.textContent = 'Delete contact'
