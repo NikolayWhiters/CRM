@@ -1,3 +1,4 @@
+// IMPORT // "table (thead & tbody)", "tr (client)", "API data"
 import { createClientsTable } from './createClientsTable.js'
 import { createClientTR } from './createClientsTR.js'
 import { getClients } from './clientsAPI.js'

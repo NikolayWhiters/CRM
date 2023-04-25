@@ -1,6 +1,8 @@
+// IMPORT // "function (format date&time and contact element)" and "svg (Icons)"
+import { createContactElem, formatDate, formatTime } from './otherFn.js'
+import { editDetailsOfClient } from './editClient.js'
+import { deleteClientModal } from './deleteClient.js'
 import { svgIcons } from './svg.js'
-import { formatDate, formatTime } from './date&timeInfo.js'
-import { createContactItem } from './clientsAPI.js'
 
 export const createClientTR = (data) => {
     // ----- CREATE ELEMENT'S FOR TBODY OF TABLE ----- //
@@ -24,7 +26,6 @@ export const createClientTR = (data) => {
     const clientCreatingTime = document.createElement('span')
     const clientLastChangesDate = document.createElement('span')
     const clientLastChangesTime = document.createElement('span')
-    const clientContactsSpan = document.createElement('span')
     const clientActionCHANGE = document.createElement('button')
     const clientActionDELETE = document.createElement('button')
     //                          ↓
@@ -33,10 +34,32 @@ export const createClientTR = (data) => {
     const clientActionCHANGESpan = document.createElement('span')
     const clientActionDELETESvg = document.createElement('span')
     const clientActionDELETESpan = document.createElement('span')
-    
+
+    //
+    const clientEdit = editDetailsOfClient(data)
+    const clientDelete = deleteClientModal()
+
     for (const contact of data.contacts) {
-        createContactItem(contact.type, contact.value, clientContactsSpan)
+        createContactElem(contact.type, contact.value, tableTbodyTrTdContacts)
     }
+
+    const deleteClientById = () => {
+        import('./clientsAPI.js').then(({ deleteClient }) => {
+            clientDelete.deleteClientBtn.addEventListener('click', () => {
+                deleteClient(data.id)
+                document.getElementById(data.id).remove()
+            })
+        })
+    }
+
+    clientActionCHANGE.addEventListener('click', () => {
+        document.body.append(clientEdit.editClientBlock)
+    })
+
+    clientActionDELETE.addEventListener('click', () => {
+        deleteClientById()
+        document.body.append(clientDelete.deleteClient)
+    })
 
     // ----- TEXT FOR ELEMENT'S ----- //
     clientId.textContent = data.id.substr(0, 6)
@@ -64,10 +87,9 @@ export const createClientTR = (data) => {
     )
     // Add // "td" ← "span (client)"
     tableTbodyTrTdId.append(clientId)
-    tableTbodyTrTdFullName.append(clientLastName, clientName, clientSurname)
+    tableTbodyTrTdFullName.append(clientName, clientLastName,  clientSurname)
     tableTbodyTrTdCreatingDate.append(clientCreatingDate, clientCreatingTime)
     tableTbodyTrTdLastChanges.append(clientLastChangesDate, clientLastChangesTime)
-    tableTbodyTrTdContacts.append(clientContactsSpan)
     tableTbodyTrTdActions.append(clientActionCHANGE, clientActionDELETE)
     // Add // "span (client)" ← "span (svg) and (text)"
     clientActionCHANGE.append(clientActionCHANGESvg, clientActionCHANGESpan)
@@ -92,7 +114,6 @@ export const createClientTR = (data) => {
     clientCreatingTime.classList.add('personinfo__creating-time')
     clientLastChangesDate.classList.add('personinfo__lastchanges-date')
     clientLastChangesTime.classList.add('personinfo__lastchanges-time')
-    clientContactsSpan.classList.add('personinfo__contacts')
     clientActionCHANGE.classList.add('personinfo__action-change', 'change-info', 'btn')
     clientActionDELETE.classList.add('personinfo__action-delete', 'delete-info', 'btn')
     // Class // "span (svg) and (text)"

@@ -111,10 +111,6 @@ ul {
     padding: 0 15px;
 }
 
-.flex {
-    display: flex;
-}
-
 .btn {
     padding: 0;
     border: none;
@@ -133,6 +129,7 @@ ul {
 }
 
 .header__container {
+    display: flex;
     align-items: center;
 }
 
@@ -166,6 +163,7 @@ ul {
 
 /* --- Head of table --- */
 .clients {
+    display: flex;
     align-items: center;
     flex-direction: column;
     padding-bottom: 120px;
@@ -193,7 +191,7 @@ ul {
 }
 
 .clientstable__header-row {
-    padding-left: 15px;
+    padding-left: 20px;
     padding-bottom: 8px;
     text-align: left;
 }
@@ -239,7 +237,9 @@ ul {
     line-height: 19px;
     color: var(--color__black);
 }
-
+.clientstable__row-client:last-child {
+    display: flex;
+}
 .personinfo__name {
     padding-right: 5px;
 }
@@ -249,11 +249,21 @@ ul {
 }
 
 .personinfo__creating-date {
-    padding-right: 5px;
+    padding-right: 10px;
 }
 
 .personinfo__lastchanges-date {
-    padding-right: 5px;
+    padding-right: 10px;
+}
+
+.personinfo__id,
+.personinfo__creating-time,
+.personinfo__lastchanges-time {
+    color: var(--color__gray-2);
+}
+
+.personinfo__contactlink {
+    margin-right: 5px;
 }
 
 .change-info {
@@ -262,6 +272,7 @@ ul {
 
 .change-info,
 .delete-info {
+    display: flex;
     align-items: center;
     color: var(--color__black);
     cursor: pointer;
@@ -278,6 +289,7 @@ ul {
 
 /* --- Button «Add client» --- */
 .clients__addclient {
+    display: flex;
     align-items: center;
     padding: 13px 27px;
     border: 1px solid var(--color__purple-1);
@@ -330,7 +342,8 @@ ul {
 /* -- */
 
 /* --- MODAL BLOCK --- */
-.modalblock {
+.modalblock,
+.delete-modalblock {
     position: absolute;
     top: 0;
     left: 0;
@@ -343,7 +356,8 @@ ul {
     overflow-x: auto;
 }
 
-.modalblock__content {
+.modalblock__content,
+.delete-modalblock__content {
     position: relative;
     top: -5%;
     max-width: 450px;
@@ -356,7 +370,7 @@ ul {
     0% {
         transform: translate(0%, -10%) scale(0);
     }
-    
+
     100% {
         transform: translate(0%, 0%) scale(1);
     }
@@ -367,6 +381,29 @@ ul {
     font-weight: 700;
     font-size: 18px;
     line-height: 25px;
+}
+
+.delete-modalblock__title {
+    padding-top: 24px;
+    padding-bottom: 15px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.delete-modalblock__descr {
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+}
+
+.modalblock__idclient {
+    padding-left: 5px;
+    color: var(--color__gray-2);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
 }
 
 .form__name,
@@ -400,6 +437,7 @@ ul {
 .form__lastname-input:focus+.form__lastname-label,
 .form__name-input:not(:focus):valid+.form__name-label,
 .form__lastname-input:not(:focus):valid+.form__lastname-label,
+.form__surname-input:valid+.form__surname-input,
 .form__surname-label.focused {
     top: -15px;
     color: var(--color__gray-2);
@@ -646,7 +684,8 @@ ul {
 }
 
 /* CLOSE BUTTON of MODAL BLOCK -(focus, hover, active for )- */
-.modalblock__button {
+.modalblock__button,
+.delete-modalblock__close {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -659,7 +698,8 @@ ul {
     cursor: pointer;
 }
 
-.modalblock__button svg {
+.modalblock__button svg,
+.delete-modalblock__close svg {
     fill: var(--color__gray-2);
     outline: 1px solid transparent;
     outline-offset: 2px;
@@ -673,21 +713,24 @@ ul {
         transition: outline 0.3s ease;
     } */
 
-    .modalblock__button:hover svg {
+    .modalblock__button:hover svg,
+    .delete-modalblock__close:hover svg {
         fill: var(--color__purple-1);
         outline: none;
         transition: fill 0.3s ease;
     }
 }
 
-.modalblock__button:active svg {
+.modalblock__button:active svg,
+.delete-modalblock__close:active svg {
     fill: var(--color__purple-3);
     outline: none;
     transition: fill 0.3s ease;
 }
 
 /* --- Buttons SAVE and CANCEL --- */
-.form__buttonsgroup {
+.form__buttonsgroup,
+.delete-modalblock__buttonsgroup {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -695,7 +738,8 @@ ul {
     padding-bottom: 21px;
 }
 
-.form__buttonsgroup-save {
+.form__buttonsgroup-save,
+.delete-modalblock__deletebtn {
     margin-bottom: 8px;
     padding: 12px 35px;
     font-weight: 600;
@@ -706,7 +750,8 @@ ul {
     transition: background-color 0.3s ease;
 }
 
-.form__buttonsgroup-cancel {
+.form__buttonsgroup-cancel,
+.delete-modalblock__cancelbtn {
     font-size: 12px;
     line-height: 16px;
     text-decoration: underline;
@@ -715,23 +760,28 @@ ul {
 
 /* (focus, hover, active for Buttons SAVE and CANCEL) */
 @media(any-hover: hover) {
-    .form__buttonsgroup-save:hover {
+
+    .form__buttonsgroup-save:hover,
+    .delete-modalblock__deletebtn:hover {
         background-color: var(--color__purple-2);
         transition: background-color 0.3s ease;
     }
 
-    .form__buttonsgroup-cancel:hover {
+    .form__buttonsgroup-cancel:hover,
+    .delete-modalblock__cancelbtn:hover {
         color: var(--color__purple-2);
     }
 
 }
 
-.form__buttonsgroup-save:active {
+.form__buttonsgroup-save:active,
+.delete-modalblock__deletebtn:active {
     background-color: var(--color__purple-3);
     transition: background-color 0.3s ease;
 }
 
-.form__buttonsgroup-cancel:active {
+.form__buttonsgroup-cancel:active,
+.delete-modalblock__cancelbtn:active {
     color: var(--color__purple-3);
     transition: color 0.3s ease;
 }

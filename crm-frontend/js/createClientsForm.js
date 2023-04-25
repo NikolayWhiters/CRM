@@ -1,3 +1,4 @@
+// IMPORT // "function (Add contact)" and "svg (Icons)"
 import { createContact } from './createContact.js'
 import { svgIcons } from './svg.js'
 // _________________________ BLOCK OF FORM _________________________ //
