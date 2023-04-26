@@ -29,7 +29,7 @@ export const createContactElem = (type, value, elem) => {
         case 'Facebook':
             let facebook
             createContactLink(type, value, facebook, svgIcons.contactFacebook, elem)
-        case 'Vkontakte':
+        case 'Vk':
             let vkontakte
             createContactLink(type, value, vkontakte, svgIcons.contactVkontakte, elem)
         case 'Other':

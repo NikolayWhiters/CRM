@@ -356,6 +356,10 @@ ul {
     overflow-x: auto;
 }
 
+.delete-modalblock__content {
+    z-index: 2;
+}
+
 .modalblock__content,
 .delete-modalblock__content {
     position: relative;
@@ -437,7 +441,7 @@ ul {
 .form__lastname-input:focus+.form__lastname-label,
 .form__name-input:not(:focus):valid+.form__name-label,
 .form__lastname-input:not(:focus):valid+.form__lastname-label,
-.form__surname-input:valid+.form__surname-input,
+.form__surname-input:not(:focus):valid+.form__surname-label.focused,
 .form__surname-label.focused {
     top: -15px;
     color: var(--color__gray-2);

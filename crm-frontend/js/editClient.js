@@ -56,7 +56,6 @@ export const editDetailsOfClient = (data) => {
                 document.getElementById(data.id).remove()
             })
         })
-
     })
 
     for (const contact of data.contacts) {
@@ -64,8 +63,8 @@ export const editDetailsOfClient = (data) => {
 
         contactOfClient.contactBlockTypeBtn.textContent = contact.type
         contactOfClient.contactBlockInput.value = contact.value
-
-        clientForm.clientBlockBtnDivAddContact.prepend(contactOfClient.contact)
+        
+        clientForm.clientBlockBtnDivAddContact.prepend(contactOfClient.contactBlock)
     }
 
     return {
