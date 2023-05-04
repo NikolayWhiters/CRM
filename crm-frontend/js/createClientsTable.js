@@ -124,10 +124,10 @@ export const createClientsTable = () => {
     })
 
     // ----- ATTRIBUTE'S FOR ELEMENT'S ----- //
-    thSPANIdSpan.setAttribute('data-type', 'id')
-    thSPANFullNameSpan.setAttribute('data-type', 'text')
-    thSPANCreatingDateSpan.setAttribute('data-type', 'create')
-    thSPANLastChangesSpan.setAttribute('data-type', 'update')
+    tableTheadTrThId.setAttribute('data-type', 'id')
+    tableTheadTrThFullName.setAttribute('data-type', 'text')
+    tableTheadTrThCreatingDate.setAttribute('data-type', 'create')
+    tableTheadTrThLastChanges.setAttribute('data-type', 'update')
 
     // ----- CLASS FOR ELEMENT'S ----- //
     // Class // "thead"

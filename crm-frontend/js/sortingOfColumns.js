@@ -1,6 +1,6 @@
 export const sortingOfColumns = () => {
     const table = document.querySelector('table')
-    const headers = document.querySelectorAll('.sort-title')
+    const headers = table.querySelectorAll('th')
     const tbody = table.querySelector('tbody')
 
     const directions = Array.from(headers).map(() => '')
