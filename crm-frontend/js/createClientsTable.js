@@ -93,6 +93,42 @@ export const createClientsTable = () => {
     thSPANCreatingDateSVG.innerHTML = svgIcons.arrowDown
     thSPANLastChangesSVG.innerHTML = svgIcons.arrowDown
 
+    const sortDisplayItems = [tableTheadTrThSPANId, tableTheadTrThSPANFullName, tableTheadTrThSPANCreatingDate, tableTheadTrThSPANLastChanges]
+
+    for (const item of sortDisplayItems) {
+        item.addEventListener('click', () => {
+            if (item.classList.contains('sort-down')) {
+                item.classList.remove('sort-down')
+                item.classList.add('sort-up')
+            } else {
+                item.classList.add('sort-down')
+                item.classList.remove('sort-up')
+            }
+        })
+    }
+
+    tableTheadTrThSPANCreatingDate.addEventListener('click', () => {
+        if (tableTheadTrThSPANCreatingDate.classList.contains('sort-down')) {
+            thSPANCreatingDateSpan.classList.add('sort-up')
+        } else {
+            thSPANCreatingDateSpan.classList.remove('sort-up')
+        }
+    })
+
+    tableTheadTrThSPANLastChanges.addEventListener('click', () => {
+        if (tableTheadTrThSPANLastChanges.classList.contains('sort-down')) {
+            thSPANLastChangesSpan.classList.add('sort-up')
+        } else {
+            thSPANLastChangesSpan.classList.remove('sort-up')
+        }
+    })
+
+    // ----- ATTRIBUTE'S FOR ELEMENT'S ----- //
+    thSPANIdSpan.setAttribute('data-type', 'id')
+    thSPANFullNameSpan.setAttribute('data-type', 'text')
+    thSPANCreatingDateSpan.setAttribute('data-type', 'create')
+    thSPANLastChangesSpan.setAttribute('data-type', 'update')
+
     // ----- CLASS FOR ELEMENT'S ----- //
     // Class // "thead"
     tableThead.classList.add('clientstable__header')
@@ -113,10 +149,10 @@ export const createClientsTable = () => {
     tableTheadTrThSPANContacts.classList.add('header-row__subblock')
     tableTheadTrThSPANActions.classList.add('header-row__subblock')
     // Class // "span (text)"
-    thSPANIdSpan.classList.add('header-row__subblock-titlefirst')
-    thSPANFullNameSpan.classList.add('header-row__subblock-title')
-    thSPANCreatingDateSpan.classList.add('header-row__subblock-title')
-    thSPANLastChangesSpan.classList.add('header-row__subblock-title')
+    thSPANIdSpan.classList.add('header-row__subblock-titlefirst', 'sort-title')
+    thSPANFullNameSpan.classList.add('header-row__subblock-title', 'sort-title')
+    thSPANCreatingDateSpan.classList.add('header-row__subblock-title', 'sort-title')
+    thSPANLastChangesSpan.classList.add('header-row__subblock-title', 'sort-title')
     thSPANContactsSpan.classList.add('header-row__subblock-title')
     thSPANActionsSpan.classList.add('header-row__subblock-title')
     // Class // "span (svg)"

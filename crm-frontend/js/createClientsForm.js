@@ -34,7 +34,18 @@ export const createClientForm = () => {
     const clientBlockBtnSaveAndCancel = document.createElement('div')
     // Create // "button (Save and Cancel)"
     const clientBlockBtnSave = document.createElement('button')
+    const clientBlockBtnSaveSpinner = document.createElement('span')
+    const clientBlockBtnSaveText = document.createElement('span')
     const clientBlockBtnCancel = document.createElement('button')
+
+    // Create // for Validate
+    const errorBlock = document.createElement('div')
+    const errorBlockName = document.createElement('span')
+    const errorBlockSurname = document.createElement('span')
+    const errorBlockLastName = document.createElement('span')
+    const errorBlockUncorrectText = document.createElement('span')
+    const errorBlockRequiredValue = document.createElement('span')
+    const errorBlockRequiredContact = document.createElement('span')
 
     // ----- TEXT FOR ELEMENT'S ----- //
     clientBlocklabelNameRequired.textContent = '*'
@@ -47,9 +58,19 @@ export const createClientForm = () => {
     clientBlockBtnClose.innerHTML = svgIcons.addClientBtnClose
     clientBlockBtnAddContactIcon.innerHTML = svgIcons.iconAddContact
     clientBlockBtnAddContactIconActive.innerHTML = svgIcons.iconAddContactHoverActive
+    clientBlockBtnSaveSpinner.innerHTML = svgIcons.saveSpinnerIcon
     clientBlockBtnAddContactTEXT.textContent = 'Add contact'
-    clientBlockBtnSave.textContent = 'Save'
+    clientBlockBtnSaveText.textContent = 'Save'
     clientBlockBtnCancel.textContent = 'Cancel'
+
+    // Get attribute // For Validate
+    errorBlock.classList.add('modalblock__error')
+    errorBlockName.id = 'error-name'
+    errorBlockSurname.id = 'error-surname'
+    errorBlockLastName.id = 'error-lastname'
+    errorBlockUncorrectText.id = 'error-uncorrecttext'
+    errorBlockRequiredValue.id = 'error-requiredvalue'
+    errorBlockRequiredContact.id = 'error-requiredcontact'
 
     // Get attribute //
     clientBlockInputName.type = 'text'
@@ -71,7 +92,17 @@ export const createClientForm = () => {
         clientBlockDivLastname,
         clientBlockDivSurname,
         clientBlockBtnDivAddContact,
+        errorBlock,
         clientBlockBtnSaveAndCancel
+    )
+    // Add // Validate
+    errorBlock.append(
+        errorBlockName,
+        errorBlockSurname,
+        errorBlockLastName,
+        errorBlockUncorrectText,
+        errorBlockRequiredValue,
+        errorBlockRequiredContact
     )
     // Add // div (subblock of label & input) ← label & input (NAME, SURNAME, LASTNAME)
     clientBlockDivName.append(clientBlockInputName, clientBlocklabelName)
@@ -89,6 +120,8 @@ export const createClientForm = () => {
         clientBlockBtnAddContactTEXT
     )
     clientBlockBtnSaveAndCancel.append(clientBlockBtnSave, clientBlockBtnCancel)
+    // Add // span (save) ← span (spinner icon)
+    clientBlockBtnSave.append(clientBlockBtnSaveSpinner, clientBlockBtnSaveText)
     // Add // span (text) ← span (required)
     clientBlocklabelName.append(clientBlocklabelNameRequired)
     clientBlocklabelLastName.append(clientBlocklabelLastNameRequired)
@@ -123,6 +156,8 @@ export const createClientForm = () => {
     clientBlockBtnSaveAndCancel.classList.add('form__buttonsgroup')
     // Class // "button (Save & Cancel)"
     clientBlockBtnSave.classList.add('form__buttonsgroup-save', 'btn')
+    clientBlockBtnSaveSpinner.classList.add('form__buttonsgroup-save-spinner')
+    clientBlockBtnSaveText.classList.add('form__buttonsgroup-text')
     clientBlockBtnCancel.classList.add('form__buttonsgroup-cancel', 'btn')
 
     // ----- EVENT HANDLER'S ----- //
@@ -144,9 +179,6 @@ export const createClientForm = () => {
         if (contactElements.length < 9) {
             const contactElement = createContact()
             clientBlockBtnDivAddContact.prepend(contactElement.contactBlock)
-            if (contactElements.length >= 5) {
-                document.querySelector('.modalblock__content').style.top = "0%"
-            }
         } else {
             const contactElement = createContact()
             clientBlockBtnDivAddContact.prepend(contactElement.contactBlock)
@@ -178,6 +210,7 @@ export const createClientForm = () => {
         clientBlockBtnDivAddContact,
         clientBlockBtnAddContact,
         clientBlockBtnSave,
-        clientBlockBtnCancel
+        clientBlockBtnCancel,
+        clientBlockBtnSaveSpinner
     }
 }

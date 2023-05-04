@@ -32,8 +32,10 @@ export const createClientTR = (data) => {
     // Create // "span (svg) and (text)" for span (client)
     const clientActionCHANGESvg = document.createElement('span')
     const clientActionCHANGESpan = document.createElement('span')
+    const clientActionCHANGESvgSpinner = document.createElement('span')
     const clientActionDELETESvg = document.createElement('span')
     const clientActionDELETESpan = document.createElement('span')
+    const clientActionDELETESvgSpinner = document.createElement('span')
 
     //
     const clientEdit = editDetailsOfClient(data)
@@ -46,19 +48,37 @@ export const createClientTR = (data) => {
     const deleteClientById = () => {
         import('./clientsAPI.js').then(({ deleteClient }) => {
             clientDelete.deleteClientBtn.addEventListener('click', () => {
-                deleteClient(data.id)
-                document.getElementById(data.id).remove()
+                clientDelete.deleteClientBtnSpinner.style.display = 'block'
+
+                setTimeout(() => {
+                    deleteClient(data.id)
+                    document.getElementById(data.id).remove()
+                }, 700)
             })
         })
     }
 
     clientActionCHANGE.addEventListener('click', () => {
-        document.body.append(clientEdit.editClientBlock)
+        clientActionCHANGESvgSpinner.style.display = 'block'
+        clientActionCHANGESvg.style.display = 'none'
+        setTimeout(() => {
+            document.body.append(clientEdit.editClientBlock)
+
+            clientActionCHANGESvgSpinner.style.display = 'none'
+            clientActionCHANGESvg.style.display = 'block'
+        }, 700)
     })
 
     clientActionDELETE.addEventListener('click', () => {
-        deleteClientById()
-        document.body.append(clientDelete.deleteClient)
+        clientActionDELETESvgSpinner.style.display = 'block'
+        clientActionDELETESvg.style.display = 'none'
+        setTimeout(() => {
+            deleteClientById()
+            document.body.append(clientDelete.deleteClient)
+
+            clientActionDELETESvgSpinner.style.display = 'none'
+            clientActionDELETESvg.style.display = 'block'
+        }, 700)
     })
 
     // ----- TEXT FOR ELEMENT'S ----- //
@@ -69,7 +89,9 @@ export const createClientTR = (data) => {
     clientActionCHANGESpan.textContent = 'Change'
     clientActionDELETESpan.textContent = 'Delete'
     clientActionCHANGESvg.innerHTML = svgIcons.changeIcon
+    clientActionCHANGESvgSpinner.innerHTML = svgIcons.changeSpinnerIcon
     clientActionDELETESvg.innerHTML = svgIcons.deleteIcon
+    clientActionDELETESvgSpinner.innerHTML = svgIcons.deleteSpinnerIcon
     clientCreatingDate.textContent = formatDate(data.createdAt)
     clientCreatingTime.textContent = formatTime(data.createdAt)
     clientLastChangesDate.textContent = formatDate(data.updatedAt)
@@ -87,13 +109,13 @@ export const createClientTR = (data) => {
     )
     // Add // "td" ← "span (client)"
     tableTbodyTrTdId.append(clientId)
-    tableTbodyTrTdFullName.append(clientName, clientLastName,  clientSurname)
+    tableTbodyTrTdFullName.append(clientLastName, clientName, clientSurname)
     tableTbodyTrTdCreatingDate.append(clientCreatingDate, clientCreatingTime)
     tableTbodyTrTdLastChanges.append(clientLastChangesDate, clientLastChangesTime)
     tableTbodyTrTdActions.append(clientActionCHANGE, clientActionDELETE)
     // Add // "span (client)" ← "span (svg) and (text)"
-    clientActionCHANGE.append(clientActionCHANGESvg, clientActionCHANGESpan)
-    clientActionDELETE.append(clientActionDELETESvg, clientActionDELETESpan)
+    clientActionCHANGE.append(clientActionCHANGESvgSpinner, clientActionCHANGESvg, clientActionCHANGESpan)
+    clientActionDELETE.append(clientActionDELETESvgSpinner, clientActionDELETESvg, clientActionDELETESpan)
 
     // ----- CLASS FOR ELEMENT'S ----- //
     // Class // "tr"
@@ -117,8 +139,10 @@ export const createClientTR = (data) => {
     clientActionCHANGE.classList.add('personinfo__action-change', 'change-info', 'btn')
     clientActionDELETE.classList.add('personinfo__action-delete', 'delete-info', 'btn')
     // Class // "span (svg) and (text)"
+    clientActionCHANGESvgSpinner.classList.add('change-info__spinner')
     clientActionCHANGESvg.classList.add('change-info__icon')
     clientActionCHANGESpan.classList.add('change-info__text')
+    clientActionDELETESvgSpinner.classList.add('delete-info__spinner')
     clientActionDELETESvg.classList.add('delete-info__icon')
     clientActionDELETESpan.classList.add('delete-info__text')
 

@@ -72,9 +72,6 @@ export const createContact = () => {
         document.querySelector('.form__addcontact-button').classList.add('form__addcontact-button--active')
 
         const contactElements = document.getElementsByClassName('contact')
-        if (contactElements.length <= 4) {
-            document.querySelector('.modalblock__content').style.top = "-5%"
-        }
     })
     // APPEARANCE List (type's) // in (Add contact)
     contactBlockTypeBtn.addEventListener('click', (e) => {

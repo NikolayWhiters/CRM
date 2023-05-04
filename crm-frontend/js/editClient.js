@@ -2,6 +2,7 @@
 import { createClientForm } from "./createClientsForm.js"
 import { deleteClientModal } from "./deleteClient.js"
 import { createContact } from "./createContact.js"
+import { createClient } from './clientsAPI.js'
 
 export const editDetailsOfClient = (data) => {
     const editClientBlock = document.createElement('div')
@@ -63,9 +64,43 @@ export const editDetailsOfClient = (data) => {
 
         contactOfClient.contactBlockTypeBtn.textContent = contact.type
         contactOfClient.contactBlockInput.value = contact.value
-        
+
         clientForm.clientBlockBtnDivAddContact.prepend(contactOfClient.contactBlock)
     }
+
+
+    if (data.contacts.length === 10) {
+        clientForm.clientBlockBtnAddContact.classList.remove('form__addcontact-button--active')
+    }
+
+    clientForm.clientBlockForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+
+        const contactTypes = document.querySelectorAll('.contact__type')
+        const contactValues = document.querySelectorAll('.contact__input')
+
+        let contacts = []
+        let client = {}
+
+        for (let i = 0; i < contactTypes.length; i++) {
+            contacts.push({
+                type: contactTypes[i].innerHTML,
+                value: contactValues[i].value
+            })
+        }
+
+        client.name = clientForm.clientBlockInputName.value
+        client.lastName = clientForm.clientBlockInputLastName.value
+        client.surname = clientForm.clientBlockInputSurname.value
+        client.contacts = contacts
+
+        const spinnerForBtnSave = clientForm.clientBlockBtnSaveSpinner
+        spinnerForBtnSave.style.display = 'block'
+
+        setTimeout(() => {
+            createClient(client, 'PATCH', data.id)
+        }, 700)
+    })
 
     return {
         editClientBlock,

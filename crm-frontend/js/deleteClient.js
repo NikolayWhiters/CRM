@@ -10,6 +10,8 @@ export const deleteClientModal = () => {
     const deleteClientDescr = document.createElement('p')
     const deleteClientBtnAndCancel = document.createElement('div')
     const deleteClientBtn = document.createElement('button')
+    const deleteClientBtnSpinner = document.createElement('span')
+    const deleteClientBtnText = document.createElement('span')
     const deleteClientCancel = document.createElement('button')
 
     // ----- CLASS FOR ELEMENT'S ----- //
@@ -20,13 +22,16 @@ export const deleteClientModal = () => {
     deleteClientDescr.classList.add('delete-modalblock__descr')
     deleteClientBtnAndCancel.classList.add('delete-modalblock__buttonsgroup')
     deleteClientBtn.classList.add('delete-modalblock__deletebtn', 'btn')
+    deleteClientBtnSpinner.classList.add('delete-modalblock__deletebtn-spinner')
+    deleteClientBtnText.classList.add('delete-modalblock__deletebtn-text')
     deleteClientCancel.classList.add('delete-modalblock__cancelbtn', 'btn')
 
     // ----- TEXT FOR ELEMENT'S ----- //
     deleteClientClose.innerHTML = svgIcons.addClientBtnClose
+    deleteClientBtnSpinner.innerHTML = svgIcons.saveSpinnerIcon
     deleteClientTitle.textContent = 'Delete client'
     deleteClientDescr.textContent = 'Are you sure you want to delete this client?'
-    deleteClientBtn.textContent = 'Delete'
+    deleteClientBtnText.textContent = 'Delete'
     deleteClientCancel.textContent = 'Cancel'
 
     // ----- ADD ELEMENT'S ----- //
@@ -41,6 +46,7 @@ export const deleteClientModal = () => {
         deleteClientBtn,
         deleteClientCancel
     )
+    deleteClientBtn.append(deleteClientBtnSpinner, deleteClientBtnText)
 
     // ----- EVENT HANDLER'S ----- //
     deleteClientClose.addEventListener('click', () => {
@@ -54,7 +60,8 @@ export const deleteClientModal = () => {
     return {
         deleteClient,
         deleteClientContent,
-        deleteClientBtn
+        deleteClientBtn,
+        deleteClientBtnSpinner
     }
 }
 

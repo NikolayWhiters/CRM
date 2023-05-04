@@ -1,6 +1,8 @@
 // IMPORT // "function (Client "form")"
 import { createClient } from './clientsAPI.js'
 import { createClientForm } from './createClientsForm.js'
+import { validateFormOfClient } from './formValidate.js'
+import { validateContactOfClient } from './contactValidate.js'
 
 export const createNewClient = () => {
     // Declare // "function (Client "form")"
@@ -30,6 +32,9 @@ export const createNewClient = () => {
     // ADD data's of contacts // On click "Button (Add contact)"
     clientForm.clientBlockForm.addEventListener('submit', async (e) => {
         e.preventDefault()
+        if (!validateFormOfClient()) {
+            return
+        }
 
         const contactsOfTypes = document.querySelectorAll('.contact__type')
         const contactsOfValues = document.querySelectorAll('.contact__input')
@@ -37,6 +42,10 @@ export const createNewClient = () => {
         let clientObj = {}
 
         for (let i = 0; i < contactsOfTypes.length; i++) {
+            if (!validateContactOfClient(contactsOfTypes[i], contactsOfValues[i])) {
+                return
+            }
+
             contacts.push({
                 type: contactsOfTypes[i].textContent,
                 value: contactsOfValues[i].value
@@ -49,7 +58,12 @@ export const createNewClient = () => {
         clientObj.contacts = contacts
         console.log(clientObj)
 
-        await createClient(clientObj)
+        const spinnerForBtnSave = clientForm.clientBlockBtnSaveSpinner
+        spinnerForBtnSave.style.display = 'block'
+        
+        setTimeout(async () => {
+            await createClient(clientObj, 'POST')
+        }, 700)
     })
 
     // REMOVE Modal window // On click "Button Close"
