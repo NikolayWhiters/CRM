@@ -251,6 +251,11 @@ ul {
     }
 }
 
+/* .sort-down,
+.sort-up {
+    transform: rotate(180deg);
+} */
+
 /* --- Body of table --- */
 .clientstable__col-client {
     border-bottom: 1px solid var(--color__gray-1);

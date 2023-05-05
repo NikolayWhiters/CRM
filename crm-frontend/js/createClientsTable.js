@@ -109,17 +109,17 @@ export const createClientsTable = () => {
 
     tableTheadTrThSPANCreatingDate.addEventListener('click', () => {
         if (tableTheadTrThSPANCreatingDate.classList.contains('sort-down')) {
-            thSPANCreatingDateSpan.classList.add('sort-up')
+            thSPANCreatingDateSVG.classList.add('sort-up')
         } else {
-            thSPANCreatingDateSpan.classList.remove('sort-up')
+            thSPANCreatingDateSVG.classList.remove('sort-up')
         }
     })
 
     tableTheadTrThSPANLastChanges.addEventListener('click', () => {
         if (tableTheadTrThSPANLastChanges.classList.contains('sort-down')) {
-            thSPANLastChangesSpan.classList.add('sort-up')
+            thSPANLastChangesSVG.classList.add('sort-up')
         } else {
-            thSPANLastChangesSpan.classList.remove('sort-up')
+            thSPANLastChangesSVG.classList.remove('sort-up')
         }
     })
 
@@ -135,10 +135,10 @@ export const createClientsTable = () => {
     // Class // "tr"
     tableTheadTr.classList.add('clientstable__header-col')
     // Class // "th (Elements of sorting)"
-    tableTheadTrThId.classList.add('clientstable__header-row', 'header-row')
-    tableTheadTrThFullName.classList.add('clientstable__header-row', 'header-row')
-    tableTheadTrThCreatingDate.classList.add('clientstable__header-row', 'header-row')
-    tableTheadTrThLastChanges.classList.add('clientstable__header-row', 'header-row')
+    tableTheadTrThId.classList.add('clientstable__header-row', 'header-row', 'sort-down')
+    tableTheadTrThFullName.classList.add('clientstable__header-row', 'header-row', 'sort-down')
+    tableTheadTrThCreatingDate.classList.add('clientstable__header-row', 'header-row', 'sort-down')
+    tableTheadTrThLastChanges.classList.add('clientstable__header-row', 'header-row', 'sort-down')
     tableTheadTrThContacts.classList.add('clientstable__header-row', 'header-row')
     tableTheadTrThActions.classList.add('clientstable__header-row', 'header-row')
     // Class // "span (for sort)"
@@ -149,10 +149,10 @@ export const createClientsTable = () => {
     tableTheadTrThSPANContacts.classList.add('header-row__subblock')
     tableTheadTrThSPANActions.classList.add('header-row__subblock')
     // Class // "span (text)"
-    thSPANIdSpan.classList.add('header-row__subblock-titlefirst', 'sort-title')
-    thSPANFullNameSpan.classList.add('header-row__subblock-title', 'sort-title')
-    thSPANCreatingDateSpan.classList.add('header-row__subblock-title', 'sort-title')
-    thSPANLastChangesSpan.classList.add('header-row__subblock-title', 'sort-title')
+    thSPANIdSpan.classList.add('header-row__subblock-titlefirst')
+    thSPANFullNameSpan.classList.add('header-row__subblock-title')
+    thSPANCreatingDateSpan.classList.add('header-row__subblock-title')
+    thSPANLastChangesSpan.classList.add('header-row__subblock-title')
     thSPANContactsSpan.classList.add('header-row__subblock-title')
     thSPANActionsSpan.classList.add('header-row__subblock-title')
     // Class // "span (svg)"

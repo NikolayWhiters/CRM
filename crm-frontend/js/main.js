@@ -3,7 +3,7 @@ import { createClientsTable } from './createClientsTable.js'
 import { createClientTR } from './createClientsTR.js'
 import { getClients } from './clientsAPI.js'
 import { newPreloader } from './preloader.js'
-import { sortingOfColumns } from './sortingOfColumns.js'
+import { sortTable } from './sortingOfColumns.js'
 
 // Declare // "function (Table clients)"
 const table = async () => {
@@ -23,5 +23,4 @@ window.onload = () => {
 }
 
 table()
-
-document.addEventListener('DOMContentLoaded', sortingOfColumns)
+document.addEventListener('DOMContentLoaded', sortTable)
