@@ -2,7 +2,7 @@
 import { svgIcons } from './svg.js'
 
 export const createContactLink = (type, value, link, svgIcon, elem) => {
-    const personInfoLinkTooltip = document.createElement('div')
+    const personInfoLinkTooltip = document.createElement('span')
     const personInfoLinkTooltipSPAN = document.createElement('span')
     const personInfoLinkTooltipLINK = document.createElement('span')
 

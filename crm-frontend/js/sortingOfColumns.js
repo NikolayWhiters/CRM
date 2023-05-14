@@ -1,65 +1,48 @@
 export const sortTable = () => {
-    const table = document.querySelector('table');
-    console.log(table)
-    const headers = document.querySelectorAll('th');
-    console.log(headers); // проверяем, найдены ли элементы <th>
-    const tbody = table.querySelector('tbody');
+    const table = document.querySelector('table')
+    const headers = document.querySelectorAll('.sorting')
+    const tbody = table.querySelector('tbody')
+    const directions = Array.from(headers).map(() => '')
 
-    const directions = Array.from(headers).map(() => '');
-    console.log(directions)
     const transform = (type, content) => {
-        switch (type) {
-            case 'id':
-                return parseFloat(content);
-            case 'create':
-            case 'update':
-                return content.split('.').reverse().join('-');
-            case 'text':
-            default:
-                return content;
+        if (type === 'id') {
+            return parseFloat(content)
         }
+        if (type === 'create' || type === 'update') {
+            return content.split('.').reverse().join('-')
+        }
+        return content
     }
 
     const sortColumn = (index) => {
-        const type = headers[index].getAttribute('data-type');
-        const rows = tbody.querySelectorAll('tr');
-        const direction = directions[index] || 'sortUp';
-        const multiply = direction === 'sortUp' ? 1 : -1;
-        const newRows = Array.from(rows);
-
-        newRows.sort((row1, row2) => {
-            const cellA = row1.querySelectorAll('td')[index].textContent;
-            const cellB = row2.querySelectorAll('td')[index].textContent;
-
-            const a = transform(type, cellA);
-            const b = transform(type, cellB);
-
-            switch (true) {
-                case a > b:
-                    return 1 * multiply;
-                case a < b:
-                    return -1 * multiply;
-                default:
-                    break;
-                case a === b:
-                    return 0;
+        const type = headers[index].dataset.type
+        const rows = Array.from(tbody.querySelectorAll('tr'))
+        const direction = directions[index] || 'sortUp'
+        const multiply = direction === 'sortUp' ? 1 : -1
+        rows.sort((row1, row2) => {
+            const cellA = row1.querySelectorAll('td')[index].textContent
+            const cellB = row2.querySelectorAll('td')[index].textContent
+            const a = transform(type, cellA)
+            const b = transform(type, cellB)
+            if (a > b) {
+                return multiply
             }
-        });
+            if (a < b) {
+                return -multiply
+            }
+            return 0
+        })
 
-        [].forEach.call(rows, (row) => {
-            tbody.removeChild(row);
-        });
+        rows.forEach((row) => {
+            tbody.appendChild(row)
+        })
 
-        directions[index] = direction === 'sortUp' ? 'sortDown' : 'sortUp';
-
-        newRows.forEach(newRow => {
-            tbody.appendChild(newRow);
-        });
+        directions[index] = direction === 'sortUp' ? 'sortDown' : 'sortUp'
     }
 
-    [].forEach.call(headers, (header, index) => {
+    headers.forEach((header, index) => {
         header.addEventListener('click', () => {
-            sortColumn(index);
-        });
-    });
+            sortColumn(index)
+        })
+    })
 }

@@ -1,11 +1,12 @@
 // IMPORT // "function (Client "form")"
-import { createClientForm } from "./createClientsForm.js"
-import { deleteClientModal } from "./deleteClient.js"
-import { createContact } from "./createContact.js"
+import { createClientForm } from './createClientsForm.js'
+import { deleteClientModal } from './deleteClient.js'
+import { createContact } from './createContact.js'
 import { createClient } from './clientsAPI.js'
 
 export const editDetailsOfClient = (data) => {
     const editClientBlock = document.createElement('div')
+    const editClientcontainer = document.createElement('div')
     const editClientBlockContent = document.createElement('div')
     const editClientBlockTitleID = document.createElement('span')
     const clientForm = createClientForm()
@@ -21,12 +22,15 @@ export const editDetailsOfClient = (data) => {
     // ----- CLASS FOR ELEMENT'S ----- //
     // Create // "div (Edit client)" and "div (Edit Client block)" 
     editClientBlock.classList.add('modalblock')
+    editClientcontainer.classList.add('modalblock__container')
     editClientBlockContent.classList.add('modalblock__content')
     editClientBlockTitleID.classList.add('modalblock__idclient')
 
     // ----- ADD ELEMENT'S ----- //
-    // Add // "div (Edit client)" ← "div (Edit Client block)"
-    editClientBlock.append(editClientBlockContent)
+    // Add // "div (Edit client)" ← "div (container)"
+    editClientBlock.append(editClientcontainer)
+    // Add // "div (container)" ← "div (Edit Client block)"
+    editClientcontainer.append(editClientBlockContent)
     // Add // "h2" ← "span (ID client)"
     clientForm.clientBlockTitle.append(editClientBlockTitleID)
     // Add // "div (Client block)" ← "h2", "button (Close)", "form"
@@ -67,7 +71,6 @@ export const editDetailsOfClient = (data) => {
 
         clientForm.clientBlockBtnDivAddContact.prepend(contactOfClient.contactBlock)
     }
-
 
     if (data.contacts.length === 10) {
         clientForm.clientBlockBtnAddContact.classList.remove('form__addcontact-button--active')

@@ -4,11 +4,13 @@ import { createClientTR } from './createClientsTR.js'
 import { getClients } from './clientsAPI.js'
 import { newPreloader } from './preloader.js'
 import { sortTable } from './sortingOfColumns.js'
+import { searchClient } from './inputSearchClient.js'
 
 // Declare // "function (Table clients)"
 const table = async () => {
-    const clients = await getClients()
     const clientsTable = createClientsTable()
+    const clients = await getClients()
+    searchClient(clients)
 
     for (const client of clients) {
         clientsTable.tableTbody.append(createClientTR(client))

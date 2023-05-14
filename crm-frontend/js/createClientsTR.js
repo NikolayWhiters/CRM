@@ -19,13 +19,18 @@ export const createClientTR = (data) => {
     //                          ↓
     // Create // "span (client)" for td
     const clientId = document.createElement('span')
+    const clientFullName = document.createElement('span')
     const clientName = document.createElement('span')
     const clientLastName = document.createElement('span')
     const clientSurname = document.createElement('span')
+    const clientCreatingSpan = document.createElement('span')
     const clientCreatingDate = document.createElement('span')
     const clientCreatingTime = document.createElement('span')
+    const clientLastChangesSpan = document.createElement('span')
     const clientLastChangesDate = document.createElement('span')
     const clientLastChangesTime = document.createElement('span')
+    const clientContactsSpan = document.createElement('span')
+    const clientActionSpan = document.createElement('span')
     const clientActionCHANGE = document.createElement('button')
     const clientActionDELETE = document.createElement('button')
     //                          ↓
@@ -36,13 +41,16 @@ export const createClientTR = (data) => {
     const clientActionDELETESvg = document.createElement('span')
     const clientActionDELETESpan = document.createElement('span')
     const clientActionDELETESvgSpinner = document.createElement('span')
-
     //
     const clientEdit = editDetailsOfClient(data)
     const clientDelete = deleteClientModal()
 
+    // SHOW BUTTON //
+    const showBtn = document.createElement('span')
+
+
     for (const contact of data.contacts) {
-        createContactElem(contact.type, contact.value, tableTbodyTrTdContacts)
+        createContactElem(contact.type, contact.value, clientContactsSpan)
     }
 
     const deleteClientById = () => {
@@ -109,10 +117,20 @@ export const createClientTR = (data) => {
     )
     // Add // "td" ← "span (client)"
     tableTbodyTrTdId.append(clientId)
-    tableTbodyTrTdFullName.append(clientLastName, clientName, clientSurname)
-    tableTbodyTrTdCreatingDate.append(clientCreatingDate, clientCreatingTime)
-    tableTbodyTrTdLastChanges.append(clientLastChangesDate, clientLastChangesTime)
-    tableTbodyTrTdActions.append(clientActionCHANGE, clientActionDELETE)
+    tableTbodyTrTdFullName.append(clientFullName)
+    clientFullName.append(clientLastName, clientName, clientSurname)
+
+    tableTbodyTrTdCreatingDate.append(clientCreatingSpan)
+    clientCreatingSpan.append(clientCreatingDate, clientCreatingTime)
+
+    tableTbodyTrTdLastChanges.append(clientLastChangesSpan)
+    clientLastChangesSpan.append(clientLastChangesDate, clientLastChangesTime)
+
+    tableTbodyTrTdContacts.append(clientContactsSpan)
+    clientContactsSpan.append(showBtn)
+
+    tableTbodyTrTdActions.append(clientActionSpan)
+    clientActionSpan.append(clientActionCHANGE, clientActionDELETE)
     // Add // "span (client)" ← "span (svg) and (text)"
     clientActionCHANGE.append(clientActionCHANGESvgSpinner, clientActionCHANGESvg, clientActionCHANGESpan)
     clientActionDELETE.append(clientActionDELETESvgSpinner, clientActionDELETESvg, clientActionDELETESpan)
@@ -126,16 +144,22 @@ export const createClientTR = (data) => {
     tableTbodyTrTdCreatingDate.classList.add('clientstable__row-client', 'personinfo')
     tableTbodyTrTdLastChanges.classList.add('clientstable__row-client', 'personinfo')
     tableTbodyTrTdContacts.classList.add('clientstable__row-client', 'personinfo')
-    tableTbodyTrTdActions.classList.add('clientstable__row-client', 'personinfo', 'flex')
+    tableTbodyTrTdActions.classList.add('clientstable__row-client', 'personinfo')
     // Class // "span (client)"
     clientId.classList.add('personinfo__id')
+    clientFullName.classList.add('personinfo__fullname')
     clientName.classList.add('personinfo__name')
     clientLastName.classList.add('personinfo__lastname')
     clientSurname.classList.add('personinfo__surname')
+    clientCreatingSpan.classList.add('personinfo__creatingblock')
     clientCreatingDate.classList.add('personinfo__creating-date')
     clientCreatingTime.classList.add('personinfo__creating-time')
+    clientLastChangesSpan.classList.add('personinfo__lastchangesblock')
     clientLastChangesDate.classList.add('personinfo__lastchanges-date')
     clientLastChangesTime.classList.add('personinfo__lastchanges-time')
+    clientContactsSpan.classList.add('personinfo__contactsblock')
+    showBtn.classList.add('personinfo__showbutton')
+    clientActionSpan.classList.add('personinfo__actionblock')
     clientActionCHANGE.classList.add('personinfo__action-change', 'change-info', 'btn')
     clientActionDELETE.classList.add('personinfo__action-delete', 'delete-info', 'btn')
     // Class // "span (svg) and (text)"
@@ -145,6 +169,28 @@ export const createClientTR = (data) => {
     clientActionDELETESvgSpinner.classList.add('delete-info__spinner')
     clientActionDELETESvg.classList.add('delete-info__icon')
     clientActionDELETESpan.classList.add('delete-info__text')
+    // const contactsBlock = document.querySelector('.personinfo__contactsblock')
+    // // const showBtn = document.querySelector('.personinfo__showbutton')
+    // const itemsToShow = 4
 
+    // function showItems() {
+    //     const hiddenItems = contactsBlock.querySelectorAll(':scope > a:not(.contactlink-visible)')
+    //     const itemsToDisplay = Math.min(hiddenItems.length, itemsToShow)
+
+    //     for (let i = 0; i < itemsToDisplay; i++) {
+    //         hiddenItems[i].classList.add('contactlink-visible')
+    //     }
+
+    //     const hiddenItemsCount = contactsBlock.querySelectorAll(':scope > a:not(.contactlink-visible)').length
+
+    //     if (hiddenItemsCount === 0) {
+    //         showBtn.classList.add('hidden')
+    //     } else {
+    //         showBtn.innerHTML = `+ (${hiddenItemsCount})`
+    //     }
+    // }
+
+    // showBtn.addEventListener('click', showItems)
+    // showItems()
     return tableTbodyTr
 }

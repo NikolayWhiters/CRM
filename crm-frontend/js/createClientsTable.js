@@ -40,10 +40,14 @@ export const createClientsTable = () => {
     const thSPANActionsSpan = document.createElement('span')
     //                          ↓
     // Create // "span (svg)"
-    const thSPANIdSVG = document.createElement('span')
-    const thSPANFullNameSVG = document.createElement('span')
-    const thSPANCreatingDateSVG = document.createElement('span')
-    const thSPANLastChangesSVG = document.createElement('span')
+    const thSPANIdSVGDown = document.createElement('span')
+    const thSPANIdSVGUp = document.createElement('span')
+    const thSPANFullNameSVGDown = document.createElement('span')
+    const thSPANFullNameSVGUp = document.createElement('span')
+    const thSPANCreatingDateSVGDown = document.createElement('span')
+    const thSPANCreatingDateSVGUp = document.createElement('span')
+    const thSPANLastChangesSVGDown = document.createElement('span')
+    const thSPANLastChangesSVGUp = document.createElement('span')
 
     // ----- ADD ELEMENT'S ----- //
     // Add // "table" ← "thead"
@@ -74,52 +78,88 @@ export const createClientsTable = () => {
     tableTheadTrThSPANContacts.append(thSPANContactsSpan)
     tableTheadTrThSPANActions.append(thSPANActionsSpan)
     // Add // "span (text)" ← "span (svg)"
-    tableTheadTrThSPANId.append(thSPANIdSVG)
-    tableTheadTrThSPANFullName.append(thSPANFullNameSVG)
-    tableTheadTrThSPANCreatingDate.append(thSPANCreatingDateSVG)
-    tableTheadTrThSPANLastChanges.append(thSPANLastChangesSVG)
+    tableTheadTrThSPANId.append(thSPANIdSVGDown, thSPANIdSVGUp)
+    tableTheadTrThSPANFullName.append(thSPANFullNameSVGDown, thSPANFullNameSVGUp)
+    tableTheadTrThSPANCreatingDate.append(thSPANCreatingDateSVGDown, thSPANCreatingDateSVGUp)
+    tableTheadTrThSPANLastChanges.append(thSPANLastChangesSVGDown, thSPANLastChangesSVGUp)
 
     // ----- TEXT FOR ELEMENT'S ----- //
     // Text // "span (text)"
     thSPANIdSpan.textContent = 'ID '
-    thSPANFullNameSpan.textContent = 'Lastname Name Surname '
-    thSPANCreatingDateSpan.textContent = 'Date and time of creation '
+    const mediaQueryFullName = window.matchMedia('(max-width: 767px)')
+    function handleWidthChangeOne (event) {
+        if (event.matches) {
+            thSPANFullNameSpan.innerHTML = `Lastname Name<br>Surname `
+        } else {
+            thSPANFullNameSpan.textContent = 'Lastname Name Surname '
+        }
+    }
+    handleWidthChangeOne(mediaQueryFullName)
+    mediaQueryFullName.addEventListener('change', handleWidthChangeOne)
+    //
+    // WIDTH FOR 320-1023px //
+    const mediaQueryDateAndTime = window.matchMedia('(max-width: 1023px)')
+    function handleWidthChangeTwo (event) {
+        if (event.matches) {
+            thSPANCreatingDateSpan.innerHTML = `Date and time<br>of creation `
+        } else {
+            thSPANCreatingDateSpan.textContent = 'Date and time of creation '
+        }
+    }
+    handleWidthChangeTwo(mediaQueryDateAndTime)
+    mediaQueryDateAndTime.addEventListener('change', handleWidthChangeTwo)
+    //
     thSPANLastChangesSpan.textContent = 'Last changes '
     thSPANContactsSpan.textContent = 'Contacts '
     thSPANActionsSpan.textContent = 'Actions '
     // Text // "span (svg)"
-    thSPANIdSVG.innerHTML = svgIcons.arrowUp
-    thSPANFullNameSVG.innerHTML = svgIcons.arrowDown + ' A–Y+1'
-    thSPANCreatingDateSVG.innerHTML = svgIcons.arrowDown
-    thSPANLastChangesSVG.innerHTML = svgIcons.arrowDown
+    thSPANIdSVGDown.innerHTML = svgIcons.arrowDown
+    thSPANIdSVGUp.innerHTML = svgIcons.arrowUp
+    thSPANFullNameSVGDown.innerHTML = svgIcons.arrowDown + ' A–Y+1'
+    thSPANFullNameSVGUp.innerHTML = svgIcons.arrowUp + ' A–Y+1'
+    thSPANCreatingDateSVGDown.innerHTML = svgIcons.arrowDown
+    thSPANCreatingDateSVGUp.innerHTML = svgIcons.arrowUp
+    thSPANLastChangesSVGDown.innerHTML = svgIcons.arrowDown
+    thSPANLastChangesSVGUp.innerHTML = svgIcons.arrowUp
 
-    const sortDisplayItems = [tableTheadTrThSPANId, tableTheadTrThSPANFullName, tableTheadTrThSPANCreatingDate, tableTheadTrThSPANLastChanges]
-
-    for (const item of sortDisplayItems) {
-        item.addEventListener('click', () => {
-            if (item.classList.contains('sort-down')) {
-                item.classList.remove('sort-down')
-                item.classList.add('sort-up')
-            } else {
-                item.classList.add('sort-down')
-                item.classList.remove('sort-up')
-            }
-        })
-    }
-
-    tableTheadTrThSPANCreatingDate.addEventListener('click', () => {
-        if (tableTheadTrThSPANCreatingDate.classList.contains('sort-down')) {
-            thSPANCreatingDateSVG.classList.add('sort-up')
+    // Dircetion of arrow's //
+    tableTheadTrThId.addEventListener('click', () => {
+        if (thSPANIdSVGDown.style.display !== 'none') {
+            thSPANIdSVGDown.style.display = 'none'
+            thSPANIdSVGUp.style.display = 'inline-block'
         } else {
-            thSPANCreatingDateSVG.classList.remove('sort-up')
+            thSPANIdSVGDown.style.display = 'inline-block'
+            thSPANIdSVGUp.style.display = 'none'
         }
     })
 
-    tableTheadTrThSPANLastChanges.addEventListener('click', () => {
-        if (tableTheadTrThSPANLastChanges.classList.contains('sort-down')) {
-            thSPANLastChangesSVG.classList.add('sort-up')
+    tableTheadTrThFullName.addEventListener('click', () => {
+        if (thSPANFullNameSVGDown.style.display !== 'none') {
+            thSPANFullNameSVGDown.style.display = 'none'
+            thSPANFullNameSVGUp.style.display = 'inline-block'
         } else {
-            thSPANLastChangesSVG.classList.remove('sort-up')
+            thSPANFullNameSVGDown.style.display = 'inline-block'
+            thSPANFullNameSVGUp.style.display = 'none'
+        }
+    })
+
+    tableTheadTrThCreatingDate.addEventListener('click', () => {
+        if (thSPANCreatingDateSVGDown.style.display !== 'none') {
+            thSPANCreatingDateSVGDown.style.display = 'none'
+            thSPANCreatingDateSVGUp.style.display = 'inline-block'
+        } else {
+            thSPANCreatingDateSVGDown.style.display = 'inline-block'
+            thSPANCreatingDateSVGUp.style.display = 'none'
+        }
+    })
+
+    tableTheadTrThLastChanges.addEventListener('click', () => {
+        if (thSPANLastChangesSVGDown.style.display !== 'none') {
+            thSPANLastChangesSVGDown.style.display = 'none'
+            thSPANLastChangesSVGUp.style.display = 'inline-block'
+        } else {
+            thSPANLastChangesSVGDown.style.display = 'inline-block'
+            thSPANLastChangesSVGUp.style.display = 'none'
         }
     })
 
@@ -135,10 +175,10 @@ export const createClientsTable = () => {
     // Class // "tr"
     tableTheadTr.classList.add('clientstable__header-col')
     // Class // "th (Elements of sorting)"
-    tableTheadTrThId.classList.add('clientstable__header-row', 'header-row', 'sort-down')
-    tableTheadTrThFullName.classList.add('clientstable__header-row', 'header-row', 'sort-down')
-    tableTheadTrThCreatingDate.classList.add('clientstable__header-row', 'header-row', 'sort-down')
-    tableTheadTrThLastChanges.classList.add('clientstable__header-row', 'header-row', 'sort-down')
+    tableTheadTrThId.classList.add('clientstable__header-row', 'header-row', 'sorting')
+    tableTheadTrThFullName.classList.add('clientstable__header-row', 'header-row', 'sorting')
+    tableTheadTrThCreatingDate.classList.add('clientstable__header-row', 'header-row', 'sorting')
+    tableTheadTrThLastChanges.classList.add('clientstable__header-row', 'header-row', 'sorting')
     tableTheadTrThContacts.classList.add('clientstable__header-row', 'header-row')
     tableTheadTrThActions.classList.add('clientstable__header-row', 'header-row')
     // Class // "span (for sort)"
@@ -156,10 +196,14 @@ export const createClientsTable = () => {
     thSPANContactsSpan.classList.add('header-row__subblock-title')
     thSPANActionsSpan.classList.add('header-row__subblock-title')
     // Class // "span (svg)"
-    thSPANIdSVG.classList.add('header-row__subblock-icon-first')
-    thSPANFullNameSVG.classList.add('header-row__subblock-icon')
-    thSPANCreatingDateSVG.classList.add('header-row__subblock-icon')
-    thSPANLastChangesSVG.classList.add('header-row__subblock-icon')
+    thSPANIdSVGDown.classList.add('header-row__subblock-icon-down-first')
+    thSPANIdSVGUp.classList.add('header-row__subblock-icon-up-first')
+    thSPANFullNameSVGDown.classList.add('header-row__subblock-icon-down')
+    thSPANFullNameSVGUp.classList.add('header-row__subblock-icon-up')
+    thSPANCreatingDateSVGDown.classList.add('header-row__subblock-icon-down')
+    thSPANCreatingDateSVGUp.classList.add('header-row__subblock-icon-up')
+    thSPANLastChangesSVGDown.classList.add('header-row__subblock-icon-down')
+    thSPANLastChangesSVGUp.classList.add('header-row__subblock-icon-up')
 
     // ----- CREATE ELEMENT'S FOR BODY OF TABLE ----- //
     // Create // "tbody" for table

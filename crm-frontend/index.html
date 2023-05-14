@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="./img/favicon.ico">
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/media.css">
 </head>
 
 <body>
@@ -24,13 +25,14 @@
             </a>
             <form class="header__form form-search" action="#">
                 <input class="form-search__input" type="text" placeholder="Enter a request" value="">
+                <ul class="form-search__list list-hidden"></ul>
             </form>
         </div>
     </header>
     <main class="main">
         <section class="clients container" id="clients">
             <h1 class="clients__title">Clients</h1>
-            <table class="clients__clientstable clientstable" id="table-clients"></table>
+            <div class="clients__table-wrapper"><table class="clients__clientstable clientstable" id="table-clients"></table></div>
             <button class="clients__addclient addclient btn" id="btn-addclient">
                 <svg class="addclient__icon" width="23" height="16" viewBox="0 0 23 16" fill="none"
                     xmlns="http://www.w3.org/2000/svg">

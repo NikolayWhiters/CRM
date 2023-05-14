@@ -27,7 +27,7 @@ export const createContact = () => {
     contactBlockTypeBtn.textContent = contactBlockListPhone.textContent
 
     // --- GET ATTRIBUTE --- //
-    contactBlockInput.type = 'text'
+    // contactBlockInput.type = 'number'
     contactBlockInput.placeholder = 'Enter contact details'
 
     // --- ADD ELEMENT'S --- //

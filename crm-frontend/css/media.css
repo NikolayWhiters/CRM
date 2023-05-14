@@ -1,0 +1,57 @@
+@media(max-width: 1023px) {
+    .container {
+        max-width: 758px;
+    }
+
+    /* --- Body of table --- */
+    .clientstable__row-client:last-child {
+        padding-right: 20px;
+    }
+
+    .personinfo__contactsblock {
+        display: flex;
+    }
+
+    .personinfo__creatingblock,
+    .personinfo__lastchangesblock,
+    .personinfo__actionblock {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .change-info {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
+@media(max-width: 767px) {
+    .clients__clientstable {
+        min-width: 700px;
+    }
+}
+
+@media(max-width: 320px) {
+    .header__container {
+        justify-content: center;
+        height: 40px;
+    }
+
+    .header__logo {
+        width: 24px;
+        margin-right: 0;
+    }
+
+    .header__logo-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .header__form {
+        display: none;
+    }
+
+    .clients__title {
+        padding-top: 30px;
+    }
+}

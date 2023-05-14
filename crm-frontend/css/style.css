@@ -106,7 +106,7 @@ ul {
 /* ____________________ GLOBAL ____________________ */
 
 .container {
-    max-width: 1014px;
+    max-width: 1216px;
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -122,8 +122,6 @@ ul {
 
 .header {
     width: 100%;
-    padding-top: 23px;
-    padding-bottom: 23px;
     font-size: 14px;
     background-color: var(--color__white);
     box-shadow: 0px 0px 15px var(--color__gray-1);
@@ -132,6 +130,7 @@ ul {
 .header__container {
     display: flex;
     align-items: center;
+    height: 90px;
 }
 
 .header__logo {
@@ -141,6 +140,7 @@ ul {
 }
 
 .form-search {
+    position: relative;
     width: 100%;
 }
 
@@ -156,6 +156,30 @@ ul {
 
 .form-search__input::placeholder {
     color: var(--color__gray-2)
+}
+
+.form-search__list {
+    position: absolute;
+    z-index: 5;
+    max-width: 541px;
+    width: 100%;
+    padding: 5px 10px;
+    border-left: 1px solid rgba(51, 51, 51, 0.2);
+    border-right: 1px solid rgba(51, 51, 51, 0.2);
+    border-bottom: 1px solid rgba(51, 51, 51, 0.2);
+    background-color: var(--color__white);
+}
+
+.form-search__item {
+    margin: 5px 0;
+}
+
+.form-search__link {
+    color: var(--color__black);
+}
+
+.list-hidden {
+    display: none;
 }
 
 /* ____________________ MAIN ____________________ */
@@ -206,6 +230,11 @@ ul {
     color: var(--color__black);
 }
 
+.clients__table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
 .clients__clientstable {
     width: 100%;
     margin-bottom: 40px;
@@ -217,14 +246,21 @@ ul {
     color: var(--color__gray-2);
 }
 
-.clientstable__header-row {
+.clientstable__header-row:first-child {
     padding-left: 20px;
+}
+
+.clientstable__header-row {
+    padding-left: 13px;
     padding-bottom: 8px;
     text-align: left;
 }
 
 .header-row__subblock {
     font-weight: 400;
+}
+
+.sorting {
     cursor: pointer;
 }
 
@@ -251,10 +287,15 @@ ul {
     }
 }
 
-/* .sort-down,
-.sort-up {
-    transform: rotate(180deg);
-} */
+.header-row__subblock-icon-down-first,
+.header-row__subblock-icon-up {
+    display: none;
+}
+
+.header-row__subblock-icon-down,
+.header-row__subblock-icon-up {
+    color: var(--color__purple-1);
+}
 
 /* --- Body of table --- */
 .clientstable__col-client {
@@ -263,15 +304,24 @@ ul {
 }
 
 .clientstable__row-client {
-    padding: 20px;
+    padding: 20px 13px;
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
     color: var(--color__black);
 }
 
+.clientstable__row-client:first-child {
+    padding-left: 20px;
+}
+
 .clientstable__row-client:last-child {
+    padding-right: 0;
+}
+
+.personinfo__fullname {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .personinfo__name {
@@ -294,6 +344,35 @@ ul {
 .personinfo__creating-time,
 .personinfo__lastchanges-time {
     color: var(--color__gray-2);
+}
+
+.personinfo__contactsblock {
+    display: flex;
+}
+.personinfo__showbutton>a {
+    display: none;
+}
+
+.personinfo__showbutton>a.contactlink-visible {
+    display: flex;
+}
+.personinfo__showbutton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--color__purple-1);
+    border-radius: 50%;
+    font-size: 9px;
+    color: var(--color__black);
+    background-color: var(--color__white);
+}
+
+
+
+.personinfo__showbutton.hidden {
+    display: none;
 }
 
 .personinfo__contactlink {
@@ -360,6 +439,10 @@ ul {
     left: 0;
     transform: translateX(-50%);
 } */
+
+.personinfo__actionblock {
+    display: flex;
+}
 
 .change-info {
     margin-right: 30px;
@@ -449,6 +532,12 @@ ul {
 /* -- */
 
 /* --- MODAL BLOCK --- */
+.modalblock__container {
+    max-width: 470px;
+    width: 100%;
+    padding: 0 10px;
+}
+
 .modalblock,
 .delete-modalblock {
     position: absolute;
@@ -521,6 +610,7 @@ ul {
 .form__lastname {
     position: relative;
     margin-left: 30px;
+    margin-right: 30px;
     margin-bottom: 32px;
 }
 
@@ -583,7 +673,6 @@ ul {
 
 .form__addcontact-button {
     position: relative;
-    width: 25%;
     height: 35px;
     font-weight: 600;
     font-size: 14px;
@@ -607,28 +696,26 @@ ul {
 .form__addcontact-button-icon,
 .form__addcontact-button-hovericon {
     position: absolute;
-    left: -5px;
+    left: -23px;
     transition: opacity 0.3s ease;
 }
 
-@media(any-hover: hover) {
-    .form__addcontact-button:hover .form__addcontact-button-text {
-        color: var(--color__purple-2);
-        transition: color 0.3s ease;
-    }
+.form__addcontact-button:hover .form__addcontact-button-text {
+    color: var(--color__purple-2);
+    transition: color 0.3s ease;
+}
 
-    .form__addcontact-button-hovericon,
-    .form__addcontact-button:hover .form__addcontact-button-icon,
-    .form__addcontact-button:active .form__addcontact-button-icon {
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
+.form__addcontact-button-hovericon,
+.form__addcontact-button:hover .form__addcontact-button-icon,
+.form__addcontact-button:active .form__addcontact-button-icon {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-    .form__addcontact-button:hover .form__addcontact-button-hovericon,
-    .form__addcontact-button:active .form__addcontact-button-hovericon {
-        opacity: 1;
-        transition: opacity 0.3s ease;
-    }
+.form__addcontact-button:hover .form__addcontact-button-hovericon,
+.form__addcontact-button:active .form__addcontact-button-hovericon {
+    opacity: 1;
+    transition: opacity 0.3s ease;
 }
 
 .form__addcontact-button:active .form__addcontact-button-text {
@@ -647,10 +734,11 @@ ul {
 /* Add contact (type of data, input, tooltip) */
 .contact {
     display: flex;
-    max-width: 390px;
+    max-width: 410px;
     width: 100%;
     height: 37px;
     margin-bottom: 15px;
+    padding: 0 10px;
 }
 
 .contact:first-child {

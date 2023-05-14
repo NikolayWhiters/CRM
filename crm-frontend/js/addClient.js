@@ -11,11 +11,14 @@ export const createNewClient = () => {
     // ----- CREATE ELEMENT'S ----- //
     // Create // "div (Modal window)" and "div (Client block)" 
     const modalWindow = document.createElement('div')
+    const container = document.createElement('div')
     const clientBlock = document.createElement('div')
 
     // ----- ADD ELEMENT'S ----- //
-    // Add // "div (Modal window)" ← "div (Client block)"
-    modalWindow.append(clientBlock)
+    // Add // "div (Modal window)" ← "div (container)"
+    modalWindow.append(container)
+    // Add // "div (container)" ← "div (Client block)"
+    container.append(clientBlock)
     // Add // "div (Client block)" ← "h2", "button (Close)", "form"
     clientBlock.append(
         clientForm.clientBlockTitle,
@@ -26,6 +29,7 @@ export const createNewClient = () => {
     // ----- CLASS FOR ELEMENT'S ----- //
     // Class // "div (Modal window)" and "div (Client block)"
     modalWindow.classList.add('modalblock')
+    container.classList.add('modalblock__container')
     clientBlock.classList.add('modalblock__content')
 
     // ----- EVENT HANDLER'S ----- //

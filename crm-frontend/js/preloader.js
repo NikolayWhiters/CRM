@@ -1,5 +1,5 @@
 // IMPORT // "svg (Icons)"
-import { svgIcons } from "./svg.js"
+import { svgIcons } from './svg.js'
 
 export const newPreloader = () => {
     const preloaderBlock = document.createElement('div')
